@@ -1,8 +1,8 @@
 package fans.umamusume.www.reg;
 
+import com.jfinal.aop.Inject;
 import fans.umamusume.www.common.base.MyController;
 import fans.umamusume.www.login.LoginService;
-import com.jfinal.aop.Inject;
 
 public class RegController extends MyController {
 
@@ -14,7 +14,7 @@ public class RegController extends MyController {
             redirect("/");
             return;
         }
-        title("reg");
+        title("注册");
         render("index.html");
     }
 

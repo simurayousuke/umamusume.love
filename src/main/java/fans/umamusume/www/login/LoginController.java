@@ -1,8 +1,8 @@
 package fans.umamusume.www.login;
 
-import fans.umamusume.www.common.base.MyController;
 import com.jfinal.aop.Inject;
 import com.jfinal.core.ActionKey;
+import fans.umamusume.www.common.base.MyController;
 
 public class LoginController extends MyController {
 
@@ -14,7 +14,7 @@ public class LoginController extends MyController {
             redirect("/");
             return;
         }
-        title("login");
+        title("登录");
         render("index.html");
     }
 

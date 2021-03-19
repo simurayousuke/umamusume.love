@@ -6,7 +6,7 @@ public class IndexController extends MyController {
 
     public void index() {
         //todo remake home page
-        title("马娘粉");
+        title("主页");
         render("index.html");
     }
 }
