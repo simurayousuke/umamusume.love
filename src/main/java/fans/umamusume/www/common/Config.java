@@ -26,7 +26,7 @@ import java.sql.SQLException;
 public class Config extends JFinalConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
-    public static final String OSSPATH="umamusume-asset.oss-cn-shanghai.aliyuncs.com";
+    public static final String OSSPATH="umasset.zhuangcloud.cn";
 
     static Prop p;
 
