@@ -4,8 +4,8 @@
     <table class="table datatable">
         <thead>
         <tr>
-            <th>技能图标</th>
-            <th>技能名称</th>
+            <th class="flex-col" data-width="60"></th>
+            <th class="flex-col" data-width="200">技能名称</th>
             <!--<th class="flex-col" data-width="100">技能描述</th>-->
             <!--<th class="flex-col" data-width="100">原始条件</th>-->
             <th class="flex-col" data-width="300">技能条件</th>
@@ -19,7 +19,7 @@
         <tbody>
         #for(skill:skills)
         <tr>
-            <td><img src="//#(skill.getIcon())" width="50px"></td>
+            <td><span style="display: none">#(skill.getId())</span><img src="//#(skill.getIcon())" width="30px"></td>
             <td>#(skill.getName())</td>
             <!--<div>#(skill.getDescription().replaceAll("\\n","<br>"))</div>-->
             <!--<div>#(skill.getRawCondition())</div>-->
@@ -27,24 +27,29 @@
             <td>#(skill.getDuration())</td>
             <td>#(skill.getCooldown())</td>
             <td>#(skill.getType1()):#(skill.getValue1())</td>
+            #if(skill.getType2()!="0")
             <td>#(skill.getType2()):#(skill.getValue2())</td>
+            #else
+            <td></td>
+            #end
+            #if(skill.getType3()!="0")
             <td>#(skill.getType3()):#(skill.getValue3())</td>
+            #else
+            <td></td>
+            #end
         </tr>
         #end
         </tbody>
     </table>
 </div>
+#end
 
 #define css()
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.css"
-      integrity="sha512-noG2kSauTKscHlF1qRa4xZ3vCkC+qtuesmU1Fvt1XN9wxTD2L4rR7FF03VxcKBLsP6Bqr26kaz4DTVVzBfAxEA=="
-      crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.css"/>
 #end
 
 #define lib()
-<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.js"
-        integrity="sha512-sDFVy/R8CKfAFsokFuJqr6I+BXF7KzRYbGLNI58o+JJmZDphc65l3B1gPdGnPdV0KFj6wHC2vxGgQqdgywSyUQ=="
-        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.js"></script>
 #end
 
 #define js()

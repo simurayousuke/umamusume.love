@@ -11,4 +11,8 @@ public class SkillController extends MyController {
         render("index.html");
     }
 
+    public void test(){
+        renderText("ok");
+    }
+
 }
