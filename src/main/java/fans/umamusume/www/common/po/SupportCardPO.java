@@ -72,34 +72,34 @@ public class SupportCardPO {
             all_support_cards_list = new ArrayList<>();
             try {
                 stmt = c.createStatement();
-                String sql = "select a.id                as 支援卡id," +
-                        "b.text || c.text    as 卡名," +
-                        "b.text              as 卡名前缀," +
-                        "a.chara_id          as 角色id," +
-                        "c.text              as 角色名," +
-                        "a.rarity            as 稀有度," +
-                        "a.effect_table_id   as 卡面效果," +
-                        "a.unique_effect_id  as 固有效果," +
-                        "a.support_card_type as 类型," +
-                        "a.skill_set_id      as 技能组," +
-                        "d.lv as 固有效果解锁等级," +
-                        "d.type_0 as 效果1," +
-                        "d.value_0 as 数值1," +
-                        "d.type_1 as 效果2," +
-                        "d.value_1 as 数值2," +
+                String sql = "select a.id," +
+                        "b.text || c.text," +
+                        "b.text," +
+                        "a.chara_id," +
+                        "c.text," +
+                        "a.rarity," +
+                        "a.effect_table_id," +
+                        "a.unique_effect_id," +
+                        "a.support_card_type," +
+                        "a.skill_set_id," +
+                        "d.lv," +
+                        "d.type_0," +
+                        "d.value_0," +
+                        "d.type_1," +
+                        "d.value_1," +
                         "a.exchange_item_id," +
                         "a.command_type," +
                         "a.command_id," +
                         "a.detail_pos_x," +
                         "a.detail_pos_y," +
                         "a.detail_scale," +
-                        "a.detail_rot_z" +
-                        "from support_card_data as a" +
-                        "left join text_data as b" +
-                        "on b.\"index\" = a.id and b.category = 76" +
-                        "left join text_data as c" +
-                        "on c.\"index\" = a.chara_id and c.category = 170" +
-                        "left join support_card_unique_effect as d" +
+                        "a.detail_rot_z " +
+                        "from support_card_data as a " +
+                        "left join text_data as b " +
+                        "on b.\"index\" = a.id and b.category = 76 " +
+                        "left join text_data as c " +
+                        "on c.\"index\" = a.chara_id and c.category = 170 " +
+                        "left join support_card_unique_effect as d " +
                         "on d.id = a.id;";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
