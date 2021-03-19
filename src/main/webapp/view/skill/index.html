@@ -1,0 +1,52 @@
+#@layout()
+#define main()
+<div class="container">
+    <table class="table datatable">
+        <thead>
+        <tr>
+            <th>技能图标</th>
+            <th>技能名称</th>
+            <!--<th class="flex-col" data-width="100">技能描述</th>-->
+            <!--<th class="flex-col" data-width="100">原始条件</th>-->
+            <th class="flex-col" data-width="300">技能条件</th>
+            <th class="flex-col" data-width="100">持续时间</th>
+            <th class="flex-col" data-width="100">冷却时间</th>
+            <th class="flex-col" data-width="100">效果1</th>
+            <th class="flex-col" data-width="100">效果2</th>
+            <th class="flex-col" data-width="100">效果3</th>
+        </tr>
+        </thead>
+        <tbody>
+        #for(skill:skills)
+        <tr>
+            <td><img src="//#(skill.getIcon())" width="50px"></td>
+            <td>#(skill.getName())</td>
+            <!--<div>#(skill.getDescription().replaceAll("\\n","<br>"))</div>-->
+            <!--<div>#(skill.getRawCondition())</div>-->
+            <td>#(skill.getCondition())</td>
+            <td>#(skill.getDuration())</td>
+            <td>#(skill.getCooldown())</td>
+            <td>#(skill.getType1()):#(skill.getValue1())</td>
+            <td>#(skill.getType2()):#(skill.getValue2())</td>
+            <td>#(skill.getType3()):#(skill.getValue3())</td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+</div>
+
+#define css()
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.css"
+      integrity="sha512-noG2kSauTKscHlF1qRa4xZ3vCkC+qtuesmU1Fvt1XN9wxTD2L4rR7FF03VxcKBLsP6Bqr26kaz4DTVVzBfAxEA=="
+      crossorigin="anonymous"/>
+#end
+
+#define lib()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.js"
+        integrity="sha512-sDFVy/R8CKfAFsokFuJqr6I+BXF7KzRYbGLNI58o+JJmZDphc65l3B1gPdGnPdV0KFj6wHC2vxGgQqdgywSyUQ=="
+        crossorigin="anonymous"></script>
+#end
+
+#define js()
+<script src="/js/skill/skill.js?#(_generateUuid())"></script>
+#end

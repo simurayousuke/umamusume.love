@@ -1,13 +1,14 @@
 package fans.umamusume.www.common.route;
 
+import com.jfinal.config.Routes;
 import fans.umamusume.www.common.base.ErrorController;
 import fans.umamusume.www.common.base.ResJsController;
 import fans.umamusume.www.common.interceptor.ExceptionInterceptor;
+import fans.umamusume.www.common.skill.SkillController;
 import fans.umamusume.www.index.IndexController;
 import fans.umamusume.www.login.LoginController;
 import fans.umamusume.www.reg.RegController;
 import fans.umamusume.www.version.VersionController;
-import com.jfinal.config.Routes;
 
 /*
     403,404,500,logout
@@ -21,7 +22,7 @@ public class FrontRoutes extends Routes {
         add("/version", VersionController.class);
         add("/reg", RegController.class);
         add("/error", ErrorController.class, "common");
-        //add("/upload", UploadController.class);
+        add("/skill", SkillController.class);
         //add("/food", FoodController.class);
         //add("/log", LogController.class);
         add("/js/res", ResJsController.class, "common");

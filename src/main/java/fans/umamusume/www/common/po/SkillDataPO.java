@@ -305,16 +305,22 @@ public class SkillDataPO {
         this.rawCondition = rawCondition;
     }
 
-    public float getDuration() {
-        return duration;
+    public String getDuration() {
+        if (duration == -1)
+            return "瞬间生效";
+        else
+            return "" + duration / 10000;
     }
 
     public void setDuration(float duration) {
         this.duration = duration;
     }
 
-    public float getCooldown() {
-        return cooldown;
+    public String getCooldown() {
+        if (cooldown == 0)
+            return "常驻";
+        else
+            return "" + cooldown / 10000;
     }
 
     public void setCooldown(float cooldown) {

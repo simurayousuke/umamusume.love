@@ -1,34 +1,9 @@
 #@layout()
 #define main()
 <div class="container">
-    #if(!user)
-    #(_res.get("pleaseLogin"))
-    #end
-    #if(devMode)
     #(_res.get("devMode")):#(devMode)<br>
     #(_res.get("version")):#(version)<br>
-    <a href="/upload">upload</a>
-    <form>
-        <div class="input-field input-group input-control has-label-left" style="width: 250px;">
-            <label class="input-control-label-left" for="isbn_input">EAN:</label>
-            <input class="isbn form-control" id="isbn_input" type="text"/>
-            <button class="icon-barcode button scan input-control-label-right" type="button"></button>
-        </div>
-    </form>
-    #end
-    <div>
-    #for(skill:skills)
-        <div>#(skill.getId())</div>
-        <img src="//#(skill.getIcon())" width="50px">
-        <div>#(skill.getName())</div>
-        <div>#(skill.getDescription().replaceAll("\\n","<br>"))</div>
-        <div>#(skill.getRawCondition())</div>
-        <div>#(skill.getCondition())</div>
-        <div>#(skill.getDuration())</div>
-        <div>#(skill.getType1()):#(skill.getValue1())</div>
-        <br>
-    #end
-    </div>
+    <p>主页仍在建设中，您可以先访问<a href="/skill">技能数据</a></p>
 </div>
 #end
 
