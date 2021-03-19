@@ -1,13 +1,5 @@
 package fans.umamusume.www.common;
 
-import com.jfinal.log.Log;
-import fans.umamusume.www.common.handler.StaticHandler;
-import fans.umamusume.www.common.interceptor.ExceptionInterceptor;
-import fans.umamusume.www.common.interceptor.StaticInterceptor;
-import fans.umamusume.www.common.kit.SharedMethodLib;
-import fans.umamusume.www.common.model._MappingKit;
-import fans.umamusume.www.common.route.ApiRoutes;
-import fans.umamusume.www.common.route.FrontRoutes;
 import com.jfinal.config.*;
 import com.jfinal.i18n.I18nInterceptor;
 import com.jfinal.json.MixedJsonFactory;
@@ -18,6 +10,12 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.redis.RedisPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
+import fans.umamusume.www.common.handler.StaticHandler;
+import fans.umamusume.www.common.interceptor.StaticInterceptor;
+import fans.umamusume.www.common.kit.SharedMethodLib;
+import fans.umamusume.www.common.model._MappingKit;
+import fans.umamusume.www.common.route.ApiRoutes;
+import fans.umamusume.www.common.route.FrontRoutes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +26,7 @@ import java.sql.SQLException;
 public class Config extends JFinalConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
+    public static final String OSSPATH="umamusume-asset.oss-cn-shanghai.aliyuncs.com";
 
     static Prop p;
 

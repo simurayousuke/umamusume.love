@@ -25,6 +25,9 @@ public class SkillDataPO {
     private float value2;
     private int type3;
     private float value3;
+    private int icon;
+
+
 
     public static final Map<Integer, String> skill_effect_type_table = new HashMap<Integer, String>() {{
         put(1, "速度");
@@ -225,6 +228,7 @@ public class SkillDataPO {
         value2 = rs.getFloat(10);
         type3 = rs.getInt(11);
         value3 = rs.getFloat(12);
+        icon=rs.getInt(13);
     }
 
     public int getId() {
@@ -334,5 +338,13 @@ public class SkillDataPO {
 
     public void setValue3(float value3) {
         this.value3 = value3;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
     }
 }
