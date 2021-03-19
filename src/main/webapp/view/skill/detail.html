@@ -1,8 +1,21 @@
 #@layout()
 #define main()
 <div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/">主页</a></li>
+        <li><a href="/skill">技能一览</a></li>
+        #if(skill==null)
+        <li class="active">技能不存在</li>
+        #else
+        <li class="active">#(skill.getName())</li>
+        #end
+    </ol>
+    #if(skill==null)
+    <div>技能不存在</div>
+    #else
     <div class="center-parent">
-        <h2>技能数据</h2>
+
+        <h2>技能数据</h2><br>
         <table class="table table-auto table-bordered table-hover">
             <tbody>
             <tr>
@@ -51,13 +64,14 @@
     <hr>
     <div class="center-parent">
         <h2>拥有该技能的支援卡</h2>
-        建设中...
+        <p>建设中...</p>
     </div>
     <hr>
     <div class="center-parent">
         <h2>拥有该技能的马</h2>
-        建设中...
+        <p>建设中...</p>
     </div>
+    #end
 </div>
 #end
 
