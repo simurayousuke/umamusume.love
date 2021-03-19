@@ -19,11 +19,11 @@
             <tbody>
             <tr>
                 <td><span class="hide">#(skill.getId())</span><img src="//#(skill.getIcon())" width="50px"></td>
-                <td></td>
+                <td>#(skill.getName())</td>
             </tr>
             <tr>
-                <td>技能名称</td>
-                <td>#(skill.getName())</td>
+                <td>技能描述</td>
+                <td>#(skill.getDescription().replaceAll("\\n","<br>"))</td>
             </tr>
             <tr>
                 <td>技能条件</td>
