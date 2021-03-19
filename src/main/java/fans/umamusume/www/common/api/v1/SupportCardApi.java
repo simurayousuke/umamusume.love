@@ -18,6 +18,8 @@ public class SupportCardApi extends ApiV1 {
         SupportCardPO supportCard = SupportCardPO.getSupportCard(id);
         Map<String, Integer> status = new HashMap<>();
         for (SupportEffectTablePO effect : supportCard.getSupportEffectTable()) {
+            //String key=effect.getType_name();
+            String key=effect.getType_description();
             int unlockLv = effect.getUnlockLevel();
             if (unlockLv > 0 && lv < unlockLv)
                 continue;
@@ -28,7 +30,7 @@ public class SupportCardApi extends ApiV1 {
                     continue;
                 }
                 int preValue = effect.limit_values[preIndex];
-                status.put(effect.getType_name(), preValue);
+                status.put(key, preValue);
                 continue;
             }
             int nextLevel = SupportEffectTablePO.limit_levels[nextIndex];
@@ -42,7 +44,7 @@ public class SupportCardApi extends ApiV1 {
             double step = (nextValue - preValue) / (double) (nextLevel - preLevel);
             double value = preValue + step * (lv - preLevel);
             value = Math.floor(value);
-            status.put(effect.getType_name(), (int) value);
+            status.put(key, (int) value);
         }
         return status;
     }
