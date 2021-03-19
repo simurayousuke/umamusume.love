@@ -3,11 +3,12 @@
 <div class="container">
     <div class="cards">
         #for(card:cards)
-        <div class="col-md-4">
+        <div class="col-md-2">
             <div class="card">
                 <a class="card" href="/supportcard/detail/#(card.getId())">
                     <img src="//#(card.getIcon())" alt="">
-                    <div class="card-heading"><strong>#(card.getName())</strong></div>
+                    <div class="card-heading"><strong>#(card.getRarity())</strong></div>
+                    <div class="card-content text-muted">#(card.getName())</div>
                 </a>
             </div>
         </div>

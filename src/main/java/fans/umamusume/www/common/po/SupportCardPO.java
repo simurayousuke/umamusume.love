@@ -136,8 +136,17 @@ public class SupportCardPO {
         return postfix;
     }
 
-    public int getRarity() {
-        return rarity;
+    public String getRarity() {
+        switch (rarity){
+            case 1:
+                return "R";
+            case 2:
+                return "SR";
+            case 3:
+                return "SSR";
+            default:
+                return "Unknown";
+        }
     }
 
     public int getEffectTableId() {
