@@ -1,0 +1,40 @@
+#@layout()
+#define main()
+<div class="container">
+    #if(!user)
+    #(_res.get("pleaseLogin"))
+    #end
+    #if(devMode)
+    #(_res.get("devMode")):#(devMode)<br>
+    #(_res.get("version")):#(version)<br>
+    <a href="/upload">upload</a>
+    <form>
+        <div class="input-field input-group input-control has-label-left" style="width: 250px;">
+            <label class="input-control-label-left" for="isbn_input">EAN:</label>
+            <input class="isbn form-control" id="isbn_input" type="text"/>
+            <button class="icon-barcode button scan input-control-label-right" type="button"></button>
+        </div>
+    </form>
+    #end
+    <div>
+    #for(skill:skills)
+        <div>#(skill.getId())</div>
+        <div>#(skill.getName())</div>
+        <div>#(skill.getDescription().replaceAll("\\n","<br>"))</div>
+        <div>#(skill.getRawCondition())</div>
+        <div>#(skill.getCondition())</div>
+        <div>#(skill.getDuration())</div>
+        <div>#(skill.getType1()):#(skill.getValue1())</div>
+        <br>
+    #end
+    </div>
+</div>
+#end
+
+#define lib()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/1.0.0-beta.2/quagga.min.js"></script>
+#end
+
+#define js()
+<script src="/js/EAN.js?#(_generateUuid())"></script>
+#end

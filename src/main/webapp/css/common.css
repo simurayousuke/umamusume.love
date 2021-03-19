@@ -1,0 +1,60 @@
+.footer {
+    box-sizing: border-box;
+    height: 100px;
+    padding: 15px 0;
+    line-height: 26px;
+    text-align: center;
+    background-color: #eee;
+    color: #666;
+    font-weight: 300;
+}
+
+a:focus {
+    outline: none;
+}
+
+.footer a {
+    padding: 0 5px;
+}
+
+.footer p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.main {
+    min-height: calc(100vh - 182px);
+    max-width: 100%;
+}
+
+.navbar {
+    padding: 10px;
+    border-radius: 0 !important;
+}
+
+#button-scan{
+    cursor: pointer;
+}
+
+.container-form-mine{
+    width: 300px;
+    border:solid thin darkgrey;
+    padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.chart-title{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.my-chart{
+    /*width: 430px;*/
+    float: left;
+    margin: 30px;
+    border: solid thin darkgray;
+    padding: 20px;
+    margin-left: 0 !important;
+}

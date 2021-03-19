@@ -1,0 +1,52 @@
+#set(title=_res.get(title))
+#@layout()
+#define main()
+<div class="container container-form-mine" id="container-form-share">
+    <h1>#(title)</h1>
+    <form id="form-share">
+        <div class="form-group">
+            <label class="required" for="input-share-type">#(_res.get("selectShare"))</label>
+            <select class="form-control" id="input-share-type" name="type">
+                <option value=0>#(_res.get("shareAll"))</option>
+                <option value=2>#(_res.get("shareDay"))</option>
+                <option value=1>#(_res.get("sharePeriod"))</option>
+            </select>
+        </div>
+
+        <div class="form-group" id="container-startDate" hidden>
+            <label class="required" for="input-startDate" id="label-startDate">#(_res.get("startDate"))</label>
+            <input class="form-control form-date" id="input-startDate" name="startDate" readonly="" type="text">
+            <div class="help-block">#(_res.get("pickDateNotice"))</div>
+        </div>
+        <div class="form-group" id="container-endDate" hidden>
+            <label class="required" for="input-endDate">#(_res.get("endDate"))</label>
+            <input class="form-control form-date" id="input-endDate" name="endDate" readonly="" type="text">
+            <div class="help-block">#(_res.get("pickDateNotice"))</div>
+        </div>
+
+        <button class="btn btn-primary btn-block" id="button-share" type="submit">#(title)</button>
+    </form>
+</div>
+<div class="container container-form-mine" id="container-result" hidden>
+    <div class="help-block">#(_res.get("copyNotice"))</div>
+    <div class="input-group">
+        <input class="form-control" id="result-token" type="text" readonly>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" data-clipboard-target="#result-token" id="button-copy-token"><i class="icon icon-copy"></i></button>
+        </span>
+    </div>
+</div>
+#end
+
+#define css()
+<link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datetimepicker/datetimepicker.min.css"
+      rel="stylesheet"/>
+#end
+
+#define lib()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datetimepicker/datetimepicker.min.js"></script>
+#end
+
+#define js()
+<script src="/js/share-create.js?#(_generateUuid())"></script>
+#end

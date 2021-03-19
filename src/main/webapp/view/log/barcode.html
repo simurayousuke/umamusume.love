@@ -1,0 +1,37 @@
+#set(title=_res.get(title))
+#@layout()
+#define main()
+<div class="container">
+    <div class="datagrid datagrid-striped" id="datagrid-food">
+        <h1>#(title)</h1>
+        <div class="input-control search-box search-box-circle has-icon-left has-icon-right" id="searchbox-barcode"
+             style="margin-bottom: 10px; max-width: 300px">
+            <input class="form-control search-input" id="input-ean" placeholder='#(_res.get("ean"))' type="search">
+            <label class="input-control-icon-left search-icon" for="input-ean"><i class="icon icon-search"></i></label>
+            <!--            <a href="#" class="input-control-icon-right search-clear-btn"><i class="icon icon-remove"></i></a>-->
+            <a class="input-control-icon-right" href="#"><i class="icon icon-barcode" id="button-scan"></i></a>
+        </div>
+        <div class="help-block">#(_res.get("barcodeScanNotice"))</div>
+        <div class="help-block">#(_res.get("selectNotice"))</div>
+        <div class="help-block">#(_res.get("unitDisplayNotice"))</div>
+        <!--        <button class="icon-barcode btn" type="button" id="button-scan" style="display: inline-block;"></button>-->
+        <div class="datagrid-container" id="datagrid-food-main" style="text-align: center;"></div>
+        <!--        <div class="help-block">#(_res.get("selectNotice"))</div>-->
+        <div class="pager"></div>
+    </div>
+
+</div>
+#end
+
+#define css()
+<link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datagrid/zui.datagrid.min.css" rel="stylesheet"/>
+#end
+
+#define lib()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/1.0.0-beta.2/quagga.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datagrid/zui.datagrid.min.js"></script>
+#end
+
+#define js()
+<script src="/js/log/barcode.js?#(_generateUuid())"></script>
+#end

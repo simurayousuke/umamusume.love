@@ -1,0 +1,15 @@
+#set(title="403")
+#@layout()
+#define main()
+<div class="container" style="margin-top: 100px;">
+    <div class="alert alert-danger with-icon">
+        <i class="icon-remove-sign"></i>
+        <div class="content">
+            <h4>#(_res.get("errorCode")): 403 <a href="/reg">---> #(_res.get("reg"))</a>&nbsp;<a href="/login">#(_res.get("login"))</a>
+            </h4>
+            <p>#(_res.get("error403"))</p>
+        </div>
+
+    </div>
+</div>
+#end

@@ -1,0 +1,25 @@
+#set(title=_res.get(title))
+#@layout()
+#define main()
+<div class="container">
+    <div class="datagrid datagrid-striped" id="datagrid-food">
+        <h1>#(title)</h1>
+        <div class="help-block">#(_res.get("unitDisplayNotice"))</div>
+        <div class="datagrid-container" id="datagrid-food-main" style="text-align: center;"></div>
+        <div class="pager"></div>
+    </div>
+
+</div>
+#end
+
+#define css()
+<link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datagrid/zui.datagrid.min.css" rel="stylesheet"/>
+#end
+
+#define lib()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datagrid/zui.datagrid.min.js"></script>
+#end
+
+#define js()
+<script src="/js/upload/mine.js?#(_generateUuid())"></script>
+#end
