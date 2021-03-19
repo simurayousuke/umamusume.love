@@ -13,15 +13,15 @@ undertow.session.timeout=1800
 # 支持 session 热加载，避免依赖于 session 的登录型项目反复登录，默认值为 true。仅用于 devMode，生产环境无影响
 undertow.session.hotSwap=true
 # 是否开启 ssl
-undertow.ssl.enable=false
+undertow.ssl.enable=true
 # ssl 监听端口号，部署环境设置为 443
 undertow.ssl.port=443
 # 密钥库类型，建议使用 PKCS12
 undertow.ssl.keyStoreType=PKCS12
 # 密钥库文件
-undertow.ssl.keyStore=zhuangcloud.pfx
+undertow.ssl.keyStore=ssl.pfx
 # 密钥库密码
-undertow.ssl.keyStorePassword=9rA0kjIX
+undertow.ssl.keyStorePassword=qqyVEzvY
 # 别名配置，一般不使用
 # undertow.ssl.keyAlias=demo
 # ssl 开启时，是否开启 http2。检测该配置是否生效在 chrome 地址栏中输入: chrome://net-internals/#http2
