@@ -4,14 +4,9 @@ import com.jfinal.core.Controller;
 import com.jfinal.i18n.I18n;
 import com.jfinal.i18n.Res;
 import com.jfinal.kit.StrKit;
-import fans.umamusume.www.common.Config;
 import fans.umamusume.www.common.model.User;
 
 public class MyController extends Controller {
-
-    public MyController() {
-        set("__oss", Config.OSSPATH);
-    }
 
     protected void title(String title) {
         set("title", title);

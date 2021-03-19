@@ -19,7 +19,7 @@
     <div>
     #for(skill:skills)
         <div>#(skill.getId())</div>
-        <img src="//#(__oss)/skillicon/#(skill.getIcon()).png">
+        <img src="//#(skill.getIcon())" width="50px">
         <div>#(skill.getName())</div>
         <div>#(skill.getDescription().replaceAll("\\n","<br>"))</div>
         <div>#(skill.getRawCondition())</div>
