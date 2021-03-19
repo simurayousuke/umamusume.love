@@ -12,7 +12,12 @@ public class SupportCardController extends MyController {
     }
 
     public void detail(){
-        title("建设中");
+        SupportCardPO card=SupportCardPO.getSupportCard(getParaToInt());
+        if(card==null)
+            title("支援卡不存在");
+        else
+            title(card.getName());
+        set("card",card);
         render("detail.html");
     }
 

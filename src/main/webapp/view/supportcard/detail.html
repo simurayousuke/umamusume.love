@@ -3,9 +3,79 @@
 <div class="container">
     <ol class="breadcrumb">
         <li><a href="/">主页</a></li>
-        <li class="active">支援卡详情</li>
+        <li><a href="/supportcard">支援卡一览</a></li>
+        #if(card==null)
+        <li class="active">技能不存在</li>
+        #else
+        <li class="active">#(card.getName())</li>
+        #end
     </ol>
-    施工中...
+    #if(card==null)
+    <div>支援卡不存在</div>
+    #else
+    <div class="center-parent"><h2>基础数据</h2></div>
+    <div class="center-parent" style="margin: 20px 0;">
+        <img src="//#(card.getIcon())" class="img-rounded" width="100px">
+        <span class="hide">#(card.getId())</span>
+    </div>
+    <div class="center-parent">
+        <table class="table table-auto table-bordered table-hover">
+            <tbody>
+            <tr>
+                <td>卡名</td>
+                <td>#(card.getPrefix())</td>
+            </tr>
+            <tr>
+                <td>角色名</td>
+                <td>#(card.getPostfix())</td>
+            </tr>
+            <tr>
+                <td>稀有度</td>
+                <td>#(card.getRarity())</td>
+            </tr>
+            <tr>
+                <td>固有效果解锁等级</td>
+                <td>#(card.getLv())</td>
+            </tr>
+            <tr>
+                <td>固有效果1</td>
+                <td>#(card.getType1()):#(card.getValue1())</td>
+            </tr>
+            <tr>
+                <td>固有效果2</td>
+                <td>
+                    #(card.getType2()):#(card.getValue2())
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="center-parent"><h2>面板计算器</h2></div>
+    <div class="center-parent">
+        <form id="form-calc" class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">等级</span>
+                    <input type="number" class="form-control" id="input-lv" name="lv" value="50" step="1"
+                           style="width: 55px;"
+                           oninput="if(value > 50){value=50;}else if(value < 1 ){value = 1}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="button-calc">计算</button>
+        </form>
+    </div>
+    <div class="center-parent">
+        <div id="div-card-status">
+
+        </div>
+    </div>
+    <hr>
+    <div class="center-parent"><h2>技能组</h2></div>
+    <div class="center-parent" style="margin-bottom: 50px;">
+        施工中...
+    </div>
+    #end
 </div>
 #end
 
@@ -14,9 +84,9 @@
 #end
 
 #define lib()
-
+<script>let id = #(card.getId());</script>
 #end
 
 #define js()
-
+<script src="/js/supportcard/detail.js?#(_generateUuid())"></script>
 #end

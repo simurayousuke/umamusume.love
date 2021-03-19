@@ -61,6 +61,8 @@ public class SkillDataPO {
     }
 
     public static SkillDataPO getSkillData(int id) {
+        if (id == 0)
+            return null;
         for (SkillDataPO s : getAllSkillsList())
             if (s.getId() == id)
                 return s;
