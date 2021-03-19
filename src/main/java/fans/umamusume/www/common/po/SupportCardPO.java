@@ -100,7 +100,8 @@ public class SupportCardPO {
                         "left join text_data as c " +
                         "on c.\"index\" = a.chara_id and c.category = 170 " +
                         "left join support_card_unique_effect as d " +
-                        "on d.id = a.id;";
+                        "on d.id = a.id " +
+                        "order by a.rarity desc;";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
                     all_support_cards_list.add(new SupportCardPO(rs));
