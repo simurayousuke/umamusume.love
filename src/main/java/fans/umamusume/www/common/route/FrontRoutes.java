@@ -9,6 +9,7 @@ import fans.umamusume.www.index.IndexController;
 import fans.umamusume.www.login.LoginController;
 import fans.umamusume.www.reg.RegController;
 import fans.umamusume.www.supportcard.SupportCardController;
+import fans.umamusume.www.uma.UmaController;
 import fans.umamusume.www.version.VersionController;
 
 /*
@@ -25,7 +26,7 @@ public class FrontRoutes extends Routes {
         add("/error", ErrorController.class, "common");
         add("/skill", SkillController.class);
         add("/supportcard", SupportCardController.class);
-        //add("/log", LogController.class);
+        add("/uma", UmaController.class);
         add("/js/res", ResJsController.class, "common");
 
         //add("/statistic", StatisticController.class);

@@ -12,12 +12,12 @@ public class SupportCardController extends MyController {
     }
 
     public void detail(){
-        title("马娘粉");
+        title("建设中");
         render("detail.html");
     }
 
     public void rank(){
-        title("马娘粉");
+        title("建设中");
         render("rank.html");
     }
 

@@ -21,4 +21,9 @@ public class SkillController extends MyController {
         render("detail.html");
     }
 
+    public void search(){
+        title("建设中");
+        render("search.html");
+    }
+
 }
