@@ -60,6 +60,14 @@ public class SkillDataPO {
         return all_skills_list;
     }
 
+    public static SkillDataPO getSkillData(int id) {
+        for (SkillDataPO s : getAllSkillsList())
+            if (s.getId() == id)
+                return s;
+        return null;
+    }
+
+
     public static final int[] skill_icons_id = new int[]{
             10011, 10014, 10021, 10024, 10031, 10034, 10041, 10044, 10051, 10054, 10061, 10062,
             20011, 20012, 20013, 20014, 20021, 20022, 20023, 20024, 20041, 20042, 20043, 20044,

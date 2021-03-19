@@ -1,0 +1,60 @@
+#@layout()
+#define main()
+<div class="container">
+    <div>
+        <table class="table table-auto table-bordered table-hover">
+            <tbody>
+            <tr>
+                <td><span class="hide">#(skill.getId())</span><img src="//#(skill.getIcon())" width="50px"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>技能名称</td>
+                <td>#(skill.getName())</td>
+            </tr>
+            <tr>
+                <td>技能条件</td>
+                <td>#(skill.getCondition())</td>
+            </tr>
+            <tr>
+                <td>持续时间</td>
+                <td>#(skill.getDuration())</td>
+            </tr>
+            <tr>
+                <td>冷却时间</td>
+                <td>#(skill.getCooldown())</td>
+            </tr>
+            <tr>
+                <td>效果1</td>
+                <td>#(skill.getType1()):#(skill.getValue1())</td>
+            </tr>
+            <tr>
+                <td>效果2</td>
+                <td>
+                    #if(skill.getType2()!="0")
+                    #(skill.getType2()):#(skill.getValue2())
+                    #end
+                </td>
+            </tr>
+            <tr>
+                <td>效果3</td>
+                <td>
+                    #if(skill.getType3()!="0")
+                    #(skill.getType3()):#(skill.getValue3())
+                    #end
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+#end
+
+#define css()
+#end
+
+#define lib()
+#end
+
+#define js()
+#end

@@ -58,3 +58,7 @@ a:focus {
     padding: 20px;
     margin-left: 0 !important;
 }
+
+.hide {
+    display: none;
+}

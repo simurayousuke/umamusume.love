@@ -11,8 +11,14 @@ public class SkillController extends MyController {
         render("index.html");
     }
 
-    public void test(){
-        renderText("ok");
+    public void detail(){
+        SkillDataPO skill=SkillDataPO.getSkillData(getParaToInt());
+        if(skill==null)
+            title("技能不存在");
+        else
+            title(skill.getName());
+        set("skill",skill);
+        render("detail.html");
     }
 
 }
