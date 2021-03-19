@@ -62,3 +62,8 @@ a:focus {
 .hide {
     display: none;
 }
+
+.center-parent{
+    display: flex;
+    justify-content: center;
+}
