@@ -6,7 +6,7 @@ import fans.umamusume.www.common.po.SkillDataPO;
 public class SkillController extends MyController {
 
     public void index() {
-        title("技能数据");
+        title("技能一览");
         set("skills", SkillDataPO.getAllSkillsList());
         render("index.html");
     }

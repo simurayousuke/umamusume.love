@@ -1,7 +1,18 @@
 #@layout()
 #define main()
 <div class="container">
-    施工中...
+    <div class="cards">
+        #for(card:cards)
+        <div class="col-md-4">
+            <div class="card">
+                <a class="card" href="/supportcard/detail/#(card.getId())">
+                    <img src="//#(card.getIcon())" alt="">
+                    <div class="card-heading"><strong>#(card.getName())</strong></div>
+                </a>
+            </div>
+        </div>
+        #end
+    </div>
 </div>
 #end
 

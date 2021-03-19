@@ -19,7 +19,7 @@
         <tbody>
         #for(skill:skills)
         <tr>
-            <td><span class="hide">#(skill.getId())</span><img src="//#(skill.getIcon())" width="30px"></td>
+            <td><span class="hide">#(skill.getId())</span><img src="//#(skill.getIcon())" width="30px" class="img-rounded"></td>
             <td><a href="/skill/detail/#(skill.getId())">#(skill.getName())</a></td>
             <!--<div>#(skill.getDescription().replaceAll("\\n","<br>"))</div>-->
             <!--<div>#(skill.getRawCondition())</div>-->
