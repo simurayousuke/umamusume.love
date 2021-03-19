@@ -8,7 +8,7 @@ public class IndexController extends MyController {
     public void index() {
         //todo remake home page
         title("ウマファン");
-        set("skills",SkillDataPO.getAll_skills_list());
+        set("skills",SkillDataPO.getAllSkillsList());
         render("index.html");
     }
 }

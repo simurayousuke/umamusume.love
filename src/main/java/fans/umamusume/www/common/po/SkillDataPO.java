@@ -34,7 +34,7 @@ public class SkillDataPO {
     private static List<SkillDataPO> all_skills_list = null;
     private static final Log LOGGER = Log.getLog(SkillDataPO.class);
 
-    public static List<SkillDataPO> getAll_skills_list() {
+    public static List<SkillDataPO> getAllSkillsList() {
         if (null == all_skills_list) {
             Connection c = Config.createMasterConnection();
             Statement stmt = null;
@@ -63,7 +63,8 @@ public class SkillDataPO {
     public static final int[] skill_icons_id = new int[]{
             10011, 10014, 10021, 10024, 10031, 10034, 10041, 10044, 10051, 10054, 10061, 10062,
             20011, 20012, 20013, 20014, 20021, 20022, 20023, 20024, 20041, 20042, 20043, 20044,
-            20051, 20052, 20054, 20061, 20062
+            20051, 20052, 20054, 20061, 20062, 20064, 20091, 20092, 20094, 30011, 30012, 30021,
+            30022, 30041, 30051, 30052, 30071, 30072
     };
 
     public static final Map<Integer, String> skill_effect_type_table = new HashMap<Integer, String>() {{
