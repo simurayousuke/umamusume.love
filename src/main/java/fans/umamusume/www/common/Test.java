@@ -1,6 +1,7 @@
 package fans.umamusume.www.common;
 
-import fans.umamusume.www.common.api.v1.SupportCardApi;
+import fans.umamusume.www.common.po.SuccessionRelationPO;
+import fans.umamusume.www.common.po.TextSet;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +11,28 @@ public class Test {
         put("is_finalcorner==1&corner==0", "最终直线");
     }};
 
-    public static void main(String[] args) {
-        for(Map.Entry<String,Integer> entry: SupportCardApi.calc(10004,34).entrySet()){
-            System.out.println(entry.getKey()+": "+entry.getValue());
+    private static void printRelationTable() {
+        int[][] a = SuccessionRelationPO.getAllCharaRelations();
+        String s[] = new String[SuccessionRelationPO.getCharaIndexTable().size()];
+        int row = 0;
+        System.out.print(",");
+        for (Integer chara_id : SuccessionRelationPO.getCharaIndexTable().keySet()) {
+            s[row] = TextSet.CHARA_NAME_CN.get(chara_id);
+            System.out.print(s[row++] + ",");
         }
+        System.out.println();
+        row = 0;
+        for (int i[] : a) {
+            System.out.print(s[row++] + ",");
+            for (int j : i) {
+                System.out.print(j + ",");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        printRelationTable();
     }
 
 }

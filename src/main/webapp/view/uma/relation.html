@@ -1,0 +1,74 @@
+#@layout()
+#define main()
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/">主页</a></li>
+        <li class="active">相性关系</li>
+    </ol>
+    <div class="center-parent">
+        <form class="form-inline" id="form-relation-query">
+            <div class="form-group">
+                <label for="input-horse1">马1</label>&nbsp;
+                <select class="form-control" id="input-horse1" name="id1" onchange="inputChange();">
+                    #for(id:list_chara_id)
+                    <option value="#(id)">#(map_chara_id_name[id])</option>
+                    #end
+                </select>
+            </div>
+            &nbsp;
+            <div class="form-group">
+                <label for="input-horse2">马2</label>&nbsp;
+                <select class="form-control" id="input-horse2" name="id2" onchange="inputChange();">
+                    #for(id:list_chara_id)
+                    <option value="#(id)">#(map_chara_id_name[id])</option>
+                    #end
+                </select>
+            </div>
+            &nbsp;
+            <button type="submit" class="btn btn-primary hide" id="button-relation">查询</button>
+            &nbsp;
+            <span id="span-relation-result"></span>
+        </form>
+    </div>
+    <div class="center-parent"  style="margin: 20px 0;">
+        <table class="table datatable" id="table-relations">
+            <thead>
+            <th class="flex-col" data-width="80" data-type="text"></th>
+            #for(s:list_chara_name)
+            <th class="flex-col" data-width="30" data-type="number">#(s)</th>
+            #end
+            </thead>
+            <tbody>
+            #for(line:table_relations)
+            <tr>
+                <td> #(list_chara_name[for.index])</td>
+                #for(value:line)
+                #set(class="bgc-"+value)
+                #if(value==6)
+                #set(class="bgc-5")
+                #elseif(value<0||value>36)
+                #set(class="bgc-36")
+                #end
+                <td class="#(class)">#(value)</td>
+                #end
+            </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+</div>
+#end
+
+#define css()
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.css"/>
+<link href="/css/relation.css?#(_generateUuid())" rel="stylesheet"/>
+#end
+
+#define lib()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.js"></script>
+#end
+
+#define js()
+<script src="/js/datatable.js?#(_generateUuid())"></script>
+<script src="/js/uma/relation.js?#(_generateUuid())"></script>
+#end
