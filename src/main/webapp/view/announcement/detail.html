@@ -1,0 +1,62 @@
+#@layout()
+#define main()
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/">主页</a></li>
+        #if(announcement==null)
+        <li class="active">公告不存在</li>
+        #else
+        <li class="active">#(announcement.getTitle())</li>
+        #end
+    </ol>
+    #if(announcement==null)
+    <div>公告不存在</div>
+    #else
+    <div>
+        <article class="article">
+            <header>
+                <h1>#(announcement.getTitle())</h1>
+                <dl class="dl-inline">
+                    <dt>最后更新：</dt>
+                    <dd>#(_formatDate(announcement.getUpdateTime()))</dd>
+                    <dt><br></dt>
+                    <dd class="pull-right">
+                        #if(announcement.getPriority()>0)
+                        <span class="label label-success">置顶</span>
+                        #end
+                        #if(announcement.getHasTag())
+                        #switch(announcement.getLabelClass())
+                        #case (1)
+                        #set(label="label-primary")
+                        #case (2)
+                        #set(label="label-success")
+                        #case (3)
+                        #set(label="label-info")
+                        #case (4)
+                        #set(label="label-warning")
+                        #case (5)
+                        #set(label="label-danger")
+                        #end
+                        <span class="label #(label)">#(announcement.getTag())</span>
+                        #end
+                    </dd>
+                </dl>
+            </header>
+            <section class="content">
+                <p>#(announcement.getContent())</p>
+            </section>
+        </article>
+    </div>
+    #end
+</div>
+#end
+
+#define css()
+
+#end
+
+#define lib()
+#end
+
+#define js()
+#end

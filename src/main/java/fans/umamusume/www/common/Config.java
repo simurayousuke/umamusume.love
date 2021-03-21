@@ -7,6 +7,7 @@ import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.plugin.redis.RedisPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
@@ -80,6 +81,8 @@ public class Config extends JFinalConfig {
     }
 
     public void configPlugin(Plugins me) {
+        me.add(new EhCachePlugin());
+
         RedisPlugin redisUser = new RedisPlugin("user", p.get("redisHost"), p.getInt("redisPort"), p.get("redisPassword"));
         me.add(redisUser);
 
@@ -91,6 +94,7 @@ public class Config extends JFinalConfig {
         arp.setTransactionLevel(Connection.TRANSACTION_READ_COMMITTED);
         _MappingKit.mapping(arp);
         me.add(arp);
+
     }
 
 

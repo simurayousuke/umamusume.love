@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>公告</title>
+    <link href="/css/common.css?#(_generateUuid())" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/css/zui.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/bootbox/bootbox.min.css" rel="stylesheet"/>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?d5cea37c3d7f0100bc8d4a0295f058cf";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div class="container main" id="main">
+    <div class="list">
+        <header>
+            <h1>公告</h1>
+        </header>
+        <section class="items">
+            <div class="items">
+                #for(announcement:page.getList())
+                <div class="item">
+                    <div class="item-heading">
+                        #if(announcement.getPriority()>0)
+                        <div class="pull-right label label-success">置顶</div>
+                        <div class="pull-right">&nbsp;</div>
+                        #end
+                        #if(announcement.getHasTag())
+                        #switch(announcement.getLabelClass())
+                        #case (1)
+                        #set(label="label-primary")
+                        #case (2)
+                        #set(label="label-success")
+                        #case (3)
+                        #set(label="label-info")
+                        #case (4)
+                        #set(label="label-warning")
+                        #case (5)
+                        #set(label="label-danger")
+                        #end
+                        <div class="pull-right label #(label)">#(announcement.getTag())</div>
+                        #end
+                        <h4><a href="/announcement/detail/#(announcement.getId())" target="_blank">#(announcement.getTitle())</a></h4>
+                    </div>
+                    <div class="item-content">
+                        <div class="text">#(announcement.getContent())</div>
+                    </div>
+                    <div class="item-footer">
+                        <span class="text-muted">#(_formatDate(announcement.getUpdateTime()))</span>
+                    </div>
+                </div>
+                #end
+            </div>
+        </section>
+        <footer>
+            <ul class="pager" id="pager-announcement">
+        </footer>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/js/zui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/colorset.js/zui.colorset.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/bootbox/bootbox.min.js"></script>
+<script src="/js/res.js?#(_generateUuid())" charset="UTF-8"></script>
+<script src="/js/common.js?#(_generateUuid())"></script>
+<script src="/js/announcement/announcement.js?#(_generateUuid())"></script>
+<script>
+    $('#pager-announcement').pager({
+        page: #(page.getPageNumber()),
+        recPerPage:#(page.getPageSize()),
+        linkCreator:'/announcement/{page}',
+        lang:'zh_cn',
+        recTotal: #(page.getTotalRow())
+    });
+</script>
+</body>
+</html>
