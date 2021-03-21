@@ -48,7 +48,7 @@
             <tbody>
             #for(proper:list_ground)
             <tr>
-                <td>#(list_rarity[for.index])</td>
+                <td><span class="hide">#(for.index)</span>#(list_rarity[for.index])</td>
                 <td>#(proper.getSpeed())%</td>
                 <td>#(proper.getStamina())%</td>
                 <td>#(proper.getPower())%</td>
@@ -75,7 +75,7 @@
             <tbody>
             #for(proper:list_style)
             <tr>
-                <td>#(list_rarity[for.index])</td>
+                <td><span class="hide">#(for.index)</span>#(list_rarity[for.index])</td>
                 <td>#(proper.getSpeed())%</td>
                 <td>#(proper.getStamina())%</td>
                 <td>#(proper.getPower())%</td>
