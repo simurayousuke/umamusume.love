@@ -13,7 +13,7 @@ undertow.session.timeout=1800
 # 支持 session 热加载，避免依赖于 session 的登录型项目反复登录，默认值为 true。仅用于 devMode，生产环境无影响
 undertow.session.hotSwap=true
 # 是否开启 ssl
-undertow.ssl.enable=false
+undertow.ssl.enable=true
 # ssl 监听端口号，部署环境设置为 443
 undertow.ssl.port=443
 # 密钥库类型，建议使用 PKCS12
