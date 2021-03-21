@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TextSet {
 
-    public static final String[] PROPER_RARITY_LIST = new String[]{"G", "F", "E", "D", "C", "B", "A", "S"};
+    public static final String[] PROPER_RARITY_LIST = new String[]{"H?","G", "F", "E", "D", "C", "B", "A", "S"};
 
     public static final Map<Integer, String> CHARA_NAME_JP = new HashMap<Integer, String>() {{
         put(1001, "スペシャルウィーク");

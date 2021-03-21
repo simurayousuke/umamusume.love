@@ -39,11 +39,11 @@ public class ProperPO {
                 case distance:
                     if (distance_proper_list != null)
                         return distance_proper_list;
-                    distance_proper_list = new ProperPO[8];
+                    distance_proper_list = new ProperPO[9];
                     sql = "select id,proper_rate_speed,proper_rate_speed from race_proper_distance_rate;";
                     rs = stmt.executeQuery(sql);
                     while (rs.next()) {
-                        if (i > 7)
+                        if (i > 8)
                             break;
                         distance_proper_list[i++] = new ProperPO(rs, t);
                     }
@@ -52,11 +52,11 @@ public class ProperPO {
                 case ground:
                     if (ground_proper_list != null)
                         return ground_proper_list;
-                    ground_proper_list = new ProperPO[8];
+                    ground_proper_list = new ProperPO[9];
                     sql = "select id, proper_rate from race_proper_ground_rate;";
                     rs = stmt.executeQuery(sql);
                     while (rs.next()) {
-                        if (i > 7)
+                        if (i > 8)
                             break;
                         ground_proper_list[i++] = new ProperPO(rs, t);
                     }
@@ -65,11 +65,11 @@ public class ProperPO {
                 case style:
                     if (style_proper_list != null)
                         return style_proper_list;
-                    style_proper_list = new ProperPO[8];
+                    style_proper_list = new ProperPO[9];
                     sql = "select id, proper_rate from race_proper_runningstyle_rate;";
                     rs = stmt.executeQuery(sql);
                     while (rs.next()) {
-                        if (i > 7)
+                        if (i > 8)
                             break;
                         style_proper_list[i++] = new ProperPO(rs, t);
                     }
