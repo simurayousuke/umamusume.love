@@ -5,6 +5,8 @@ import com.jfinal.aop.Clear;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.kit.Ret;
 import com.jfinal.kit.StrKit;
+import com.jfinal.plugin.ehcache.CacheName;
+import com.jfinal.plugin.ehcache.EvictInterceptor;
 import fans.umamusume.www.common.base.ApiV1;
 import fans.umamusume.www.common.interceptor.NeedAdmin;
 import fans.umamusume.www.common.interceptor.NeedLogin;
@@ -14,7 +16,8 @@ import fans.umamusume.www.common.model.Announcement;
 public class AnnouncementApi extends ApiV1 {
 
     @Clear(NeedLogin.class)
-    @Before(NeedAdmin.class)
+    @Before({NeedAdmin.class,EvictInterceptor.class})
+    @CacheName("announcement")
     public void add() {
         Announcement announcement = getModel(Announcement.class, "");
         if (!StrKit.isBlank(announcement.getTag()))
@@ -32,7 +35,8 @@ public class AnnouncementApi extends ApiV1 {
     }
 
     @Clear({NeedLogin.class, POST.class})
-    @Before(NeedAdmin.class)
+    @Before({NeedAdmin.class,EvictInterceptor.class})
+    @CacheName("announcement")
     public void remove() {
         Integer id = getInt();
         if (null != id) {
