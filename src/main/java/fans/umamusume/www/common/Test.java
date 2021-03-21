@@ -1,5 +1,6 @@
 package fans.umamusume.www.common;
 
+import fans.umamusume.www.common.po.ProperPO;
 import fans.umamusume.www.common.po.SuccessionRelationPO;
 import fans.umamusume.www.common.po.TextSet;
 
@@ -30,9 +31,23 @@ public class Test {
             System.out.println();
         }
     }
+    private static void printProperTable(ProperPO[] table){
+        String[] ss=TextSet.PROPER_RARITY_LIST;
+        System.out.print("适性\t速度\t耐力\t力量\t根性\t智力\n");
+        for(ProperPO p :table){
+            System.out.printf("%s\t%d%%\t%d%%\t%d%%\t%d%%\t%d%%\n",
+                    ss[p.getId()],p.getSpeed(),p.getStamina(),p.getPower(),p.getKonjyou(),p.getIq());
+        }
+    }
+
+    private static void printAllProperTable(){
+        printProperTable(ProperPO.getProperList(ProperPO.type.distance));
+        printProperTable(ProperPO.getProperList(ProperPO.type.ground));
+        printProperTable(ProperPO.getProperList(ProperPO.type.style));
+    }
 
     public static void main(String[] args) {
-        printRelationTable();
+        printAllProperTable();
     }
 
 }

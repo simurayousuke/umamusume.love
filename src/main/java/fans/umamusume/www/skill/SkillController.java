@@ -1,4 +1,4 @@
-package fans.umamusume.www.common.skill;
+package fans.umamusume.www.skill;
 
 import fans.umamusume.www.common.base.MyController;
 import fans.umamusume.www.common.po.SkillDataPO;

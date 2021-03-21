@@ -4,10 +4,11 @@ import com.jfinal.config.Routes;
 import fans.umamusume.www.common.base.ErrorController;
 import fans.umamusume.www.common.base.ResJsController;
 import fans.umamusume.www.common.interceptor.ExceptionInterceptor;
-import fans.umamusume.www.common.skill.SkillController;
 import fans.umamusume.www.index.IndexController;
 import fans.umamusume.www.login.LoginController;
+import fans.umamusume.www.proper.ProperController;
 import fans.umamusume.www.reg.RegController;
+import fans.umamusume.www.skill.SkillController;
 import fans.umamusume.www.supportcard.SupportCardController;
 import fans.umamusume.www.uma.UmaController;
 import fans.umamusume.www.version.VersionController;
@@ -28,8 +29,7 @@ public class FrontRoutes extends Routes {
         add("/supportcard", SupportCardController.class);
         add("/uma", UmaController.class);
         add("/js/res", ResJsController.class, "common");
-
-        //add("/statistic", StatisticController.class);
+        add("/proper", ProperController.class);
         //add("/share", ShareController.class);
 
         //add("/target", TargetController.class);

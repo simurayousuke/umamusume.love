@@ -1,0 +1,1 @@
+init_datatable({sortable:true,fixedHeader:true});

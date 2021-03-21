@@ -4,7 +4,7 @@ import com.jfinal.server.undertow.UndertowServer;
 
 public class Start {
 
-    public static final String version = "0.3.1 Beta";
+    public static final String version = "0.4.0 Beta";
     public static boolean devMode;
 
     public static void main(String[] args) {

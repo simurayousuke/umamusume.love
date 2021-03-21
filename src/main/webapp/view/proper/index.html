@@ -1,0 +1,103 @@
+#@layout()
+#define main()
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/">主页</a></li>
+        <li class="active">适性修正一览</li>
+    </ol>
+    <div class="table-container">
+        <div class="center-parent"><h2>距离适性一览</h2></div>
+        <table class="table datatable">
+            <thead>
+            <tr>
+                <th class="flex-col" data-width="60">适性</th>
+                <th class="flex-col" data-width="100" data-type="number">速度</th>
+                <th class="flex-col" data-width="100" data-type="number">耐力</th>
+                <th class="flex-col" data-width="100" data-type="number">力量</th>
+                <th class="flex-col" data-width="100" data-type="number">根性</th>
+                <th class="flex-col" data-width="100" data-type="number">智力</th>
+            </tr>
+            </thead>
+            <tbody>
+            #for(proper:list_distance)
+            <tr>
+                <td><span class="hide">#(for.index)</span> #(list_rarity[for.index])</td>
+                <td>#(proper.getSpeed())%</td>
+                <td>#(proper.getStamina())%</td>
+                <td>#(proper.getPower())%</td>
+                <td>#(proper.getKonjyou())%</td>
+                <td>#(proper.getIq())%</td>
+            </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+    <div class="table-container">
+        <div class="center-parent"><h2>场地适性一览</h2></div>
+        <table class="table datatable">
+            <thead>
+            <tr>
+                <th class="flex-col" data-width="60">适性</th>
+                <th class="flex-col" data-width="100" data-type="number">速度</th>
+                <th class="flex-col" data-width="100" data-type="number">耐力</th>
+                <th class="flex-col" data-width="100" data-type="number">力量</th>
+                <th class="flex-col" data-width="100" data-type="number">根性</th>
+                <th class="flex-col" data-width="100" data-type="number">智力</th>
+            </tr>
+            </thead>
+            <tbody>
+            #for(proper:list_ground)
+            <tr>
+                <td>#(list_rarity[for.index])</td>
+                <td>#(proper.getSpeed())%</td>
+                <td>#(proper.getStamina())%</td>
+                <td>#(proper.getPower())%</td>
+                <td>#(proper.getKonjyou())%</td>
+                <td>#(proper.getIq())%</td>
+            </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+    <div class="table-container">
+        <div class="center-parent"><h2>跑法适性一览</h2></div>
+        <table class="table datatable">
+            <thead>
+            <tr>
+                <th class="flex-col" data-width="60">适性</th>
+                <th class="flex-col" data-width="100" data-type="number">速度</th>
+                <th class="flex-col" data-width="100" data-type="number">耐力</th>
+                <th class="flex-col" data-width="100" data-type="number">力量</th>
+                <th class="flex-col" data-width="100" data-type="number">根性</th>
+                <th class="flex-col" data-width="100" data-type="number">智力</th>
+            </tr>
+            </thead>
+            <tbody>
+            #for(proper:list_style)
+            <tr>
+                <td>#(list_rarity[for.index])</td>
+                <td>#(proper.getSpeed())%</td>
+                <td>#(proper.getStamina())%</td>
+                <td>#(proper.getPower())%</td>
+                <td>#(proper.getKonjyou())%</td>
+                <td>#(proper.getIq())%</td>
+                #end
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+#end
+
+#define css()
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.css"/>
+#end
+
+#define lib()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.js"></script>
+<script src="/js/datatable.js?#(_generateUuid())"></script>
+#end
+
+#define js()
+<script src="/js/proper/proper.js?#(_generateUuid())"></script>
+#end
