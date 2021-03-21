@@ -40,7 +40,7 @@ public class ProperPO {
                     if (distance_proper_list != null)
                         return distance_proper_list;
                     distance_proper_list = new ProperPO[9];
-                    sql = "select id,proper_rate_speed,proper_rate_speed from race_proper_distance_rate;";
+                    sql = "select id,proper_rate_speed,proper_rate_power from race_proper_distance_rate;";
                     rs = stmt.executeQuery(sql);
                     while (rs.next()) {
                         if (i > 8)
