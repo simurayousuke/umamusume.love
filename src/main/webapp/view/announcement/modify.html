@@ -3,21 +3,24 @@
 <div class="container">
     <ol class="breadcrumb">
         <li><a href="/">主页</a></li>
-        <li class="active">新建公告</li>
+        <li class="active">修改公告</li>
     </ol>
     <div style="margin-bottom: 20px;">
         <form id="form-announcement-add">
+            <input class="hide" name="id" value="#(announcement.getId())">
             <div class="form-group">
                 <label for="input-title">标题</label>
-                <input type="text" class="form-control" id="input-title" name="title">
+                <input type="text" class="form-control" id="input-title" name="title"
+                       value="#(announcement.getTitle())">
             </div>
             <div class="form-group">
                 <label for="input-priority">优先级</label>
-                <input type="number" class="form-control" id="input-priority" value="0" name="priority">
+                <input type="number" class="form-control" id="input-priority" name="priority"
+                       value="#(announcement.getPriority())">
             </div>
             <div class="form-group">
                 <label for="input-tag">Tag</label>
-                <input type="text" class="form-control" id="input-tag" name="tag">
+                <input type="text" class="form-control" id="input-tag" name="tag" value="#(announcement.getTag())">
             </div>
             <div class="form-group">
                 <label for="input-tag-class">Tag类型</label>&nbsp;
@@ -47,5 +50,10 @@
 #end
 
 #define js()
-<script src="/js/announcement/add.js?#(_generateUuid())"></script>
+<script src="/js/announcement/modify.js?#(_generateUuid())"></script>
+<script>
+    document.getElementById("input-tag-class").selectedIndex = #(announcement.getLabelClass());
+    let content = '#(announcement.getContent())';
+    document.getElementById("input-content").value = content.replaceAll("<br>", "\r\n");
+</script>
 #end

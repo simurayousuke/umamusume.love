@@ -12,12 +12,12 @@
             <th class="flex-col" data-width="200">技能名称</th>
             <!--<th class="flex-col" data-width="100">技能描述</th>-->
             <!--<th class="flex-col" data-width="100">原始条件</th>-->
-            <th class="flex-col" data-width="300">技能条件</th>
-            <th class="flex-col" data-width="100">持续时间</th>
-            <th class="flex-col" data-width="100">冷却时间</th>
-            <th class="flex-col" data-width="100">效果1</th>
-            <th class="flex-col" data-width="100">效果2</th>
-            <th class="flex-col" data-width="100">效果3</th>
+            <th class="flex-col" data-width="300">技能条件<a data-toggle="tooltip" data-placement="left" data-title="显示的为翻译后的条件，原始条件请点击i查看" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a></th>
+            <th class="flex-col" data-width="100">持续时间<a data-toggle="tooltip" data-placement="left" data-title="显示的为推测后的换算单位，原始数据请点击i查看" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a></th>
+            <th class="flex-col" data-width="100">冷却时间<a data-toggle="tooltip" data-placement="left" data-title="显示的为推测后的换算单位，原始数据请点击i查看" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a></th>
+            <th class="flex-col" data-width="100">效果1<a data-toggle="tooltip" data-placement="left" data-title="显示的为推测后的换算单位，原始数据请点击i查看" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a></th>
+            <th class="flex-col" data-width="100">效果2<a data-toggle="tooltip" data-placement="left" data-title="显示的为推测后的换算单位，原始数据请点击i查看" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a></th>
+            <th class="flex-col" data-width="100">效果3<a data-toggle="tooltip" data-placement="left" data-title="显示的为推测后的换算单位，原始数据请点击i查看" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a></th>
         </tr>
         </thead>
         <tbody>
@@ -27,20 +27,12 @@
             <td><a href="/skill/detail/#(skill.getId())">#(skill.getName())</a></td>
             <!--<div>#(skill.getDescription().replaceAll("\\n","<br>"))</div>-->
             <!--<div>#(skill.getRawCondition())</div>-->
-            <td>#(skill.getCondition())</td>
-            <td>#(skill.getDuration())</td>
-            <td>#(skill.getCooldown())</td>
-            <td>#(skill.getType1()):#(skill.getValue1())</td>
-            #if(skill.getType2()!="0")
-            <td>#(skill.getType2()):#(skill.getValue2())</td>
-            #else
-            <td></td>
-            #end
-            #if(skill.getType3()!="0")
-            <td>#(skill.getType3()):#(skill.getValue3())</td>
-            #else
-            <td></td>
-            #end
+            <td><a data-toggle="tooltip" data-placement="left" data-title="#(skill.getRawCondition())" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a>#(skill.getCondition())</td>
+            <td><a data-toggle="tooltip" data-placement="left" data-title="#(skill.getRawDuration())" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a>#(skill.getDuration())</td>
+            <td><a data-toggle="tooltip" data-placement="left" data-title="#(skill.getRawCooldown())" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a>#(skill.getCooldown())</td>
+            <td>#(skill.getStr1())</td>
+            <td>#(skill.getStr2())</td>
+            <td>#(skill.getStr3())</td>
         </tr>
         #end
         </tbody>

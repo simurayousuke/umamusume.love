@@ -139,4 +139,12 @@ public abstract class BaseAnnouncement<M extends BaseAnnouncement<M>> extends Mo
 		return get("deleted");
 	}
 
+	public void setAbstract(java.lang.String _abstract) {
+		set("abstract", _abstract);
+	}
+	
+	public java.lang.String getAbstract() {
+		return getStr("abstract");
+	}
+
 }

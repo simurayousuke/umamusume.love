@@ -4,15 +4,15 @@ $("#form-announcement-add").submit(function (e) {
     let button = $("#button-announce");
     button.prop("disabled", true);
     let data = $(this).serializeObject();
-    $.post1("/api/v1/announcement/add", data, function (data) {
+    $.post1("/api/v1/announcement/modify", data, function (data) {
         if ("ok" === data.state) {
-            $.ok("ok",()=>{
+            $.ok("ok", () => {
                 window.opener=null;
                 window.open('','_self');
                 window.close();
             });
             button.prop("disabled", false);
-        }else{
+        } else {
             $.error(__res.fail);
             button.prop("disabled", false);
         }

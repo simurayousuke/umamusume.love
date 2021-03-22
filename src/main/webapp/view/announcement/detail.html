@@ -15,7 +15,12 @@
     <div>
         <article class="article">
             <header>
-                <h1>#(announcement.getTitle())</h1>
+                <h1><a href="/announcement/detail/#(announcement.getId())" target="_blank">
+                    #(announcement.getTitle())
+                    #if(announcement.getUpdateTime()!=announcement.getCreateTime())
+                    （#(_formatDate2(announcement.getUpdateTime()))）
+                    #end
+                </a></h1>
                 <dl class="dl-inline">
                     <dt>最后更新：</dt>
                     <dd>#(_formatDate(announcement.getUpdateTime()))</dd>

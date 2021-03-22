@@ -31,6 +31,20 @@ public class SkillDataPO {
     private float value3;
     private int icon;
 
+    private String durationStr;
+    private String cooldownStr;
+    private String type1Str;
+    private String type2Str;
+    private String type3Str;
+    private String value1Str;
+    private String value2Str;
+    private String value3Str;
+    private String iconStr;
+
+    private String str1;
+    private String str2;
+    private String str3;
+
     private static List<SkillDataPO> all_skills_list = null;
     private static final Log LOGGER = Log.getLog(SkillDataPO.class);
 
@@ -277,6 +291,109 @@ public class SkillDataPO {
         type3 = rs.getInt(11);
         value3 = rs.getFloat(12);
         icon = rs.getInt(13);
+        if (duration == -1)
+            durationStr = "瞬间生效";
+        else
+            durationStr = (int) Math.floor(duration / 10000) + "秒";
+        if (cooldown == 0)
+            cooldownStr = "常驻";
+        else
+            cooldownStr = (int) Math.floor(cooldown / 10000) + "秒";
+        if (skill_effect_type_table.containsKey((type1)))
+            type1Str = skill_effect_type_table.get(type1);
+        else
+            type1Str = "" + type1;
+        if (skill_effect_type_table.containsKey((type2)))
+            type2Str = skill_effect_type_table.get(type2);
+        else
+            type2Str = "" + type2;
+        if (skill_effect_type_table.containsKey((type3)))
+            type3Str = skill_effect_type_table.get(type3);
+        else
+            type3Str = "" + type3;
+        iconStr = Config.OSSPATH + "/skillicon/00000.png";
+        for (int i : skill_icons_id) {
+            if (i == icon) {
+                iconStr = Config.OSSPATH + "/skillicon/" + String.valueOf(icon) + ".png";
+                break;
+            }
+        }
+
+        switch (type1) {
+            case 0:
+                value1Str = "";
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                value1Str = (int) Math.floor(value1 / 10000) + "";
+                break;
+            case 21:
+            case 27:
+            case 31:
+                value1Str = (int) Math.floor(value1 / 100) + "%";
+                break;
+            default:
+                value1Str = value1 + "";
+        }
+        if (type1 == 0) {
+            str1 = "";
+        } else {
+            str1 = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + type1 + ":" + value1 + "\" " +
+                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" +type1Str + ":" + value1Str;
+        }
+        switch (type2) {
+            case 0:
+                value2Str = "";
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                value2Str = (int) Math.floor(value2 / 10000) + "";
+                break;
+            case 21:
+            case 27:
+            case 31:
+                value2Str = (int) Math.floor(value2 / 100) + "%";
+                break;
+            default:
+                value2Str = value2 + "";
+        }
+        if (type2 == 0) {
+            str2 = "";
+        } else {
+            str2 = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + type2 + ":" + value2 + "\" " +
+                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" +type2Str + ":" + value2Str;
+        }
+        switch (type3) {
+            case 0:
+                value3Str = "";
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                value3Str = (int) Math.floor(value3 / 10000) + "";
+                break;
+            case 21:
+            case 27:
+            case 31:
+                value3Str = (int) Math.floor(value3 / 100) + "%";
+                break;
+            default:
+                value3Str = value3 + "";
+        }
+        if (type3 == 0) {
+            str3 = "";
+        } else {
+            str3 = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + type3 + ":" + value3 + "\" " +
+                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" + type3Str + ":" + value3Str;
+        }
     }
 
     public int getId() {
@@ -315,79 +432,96 @@ public class SkillDataPO {
         this.rawCondition = rawCondition;
     }
 
+    public float getRawDuration() {
+        return duration;
+    }
+
     public String getDuration() {
-        if (duration == -1)
-            return "瞬间生效";
-        else
-            return "" + duration / 10000;
+        return durationStr;
     }
 
     public void setDuration(float duration) {
         this.duration = duration;
     }
 
+    public float getRawCooldown() {
+        return cooldown;
+    }
+
     public String getCooldown() {
-        if (cooldown == 0)
-            return "常驻";
-        else
-            return "" + cooldown / 10000;
+        return cooldownStr;
     }
 
     public void setCooldown(float cooldown) {
         this.cooldown = cooldown;
     }
 
+    public int getRawType1() {
+        return type1;
+    }
+
     public String getType1() {
-        if (skill_effect_type_table.containsKey((type1)))
-            return skill_effect_type_table.get(type1);
-        else
-            return "" + type1;
+        return type1Str;
     }
 
     public void setType1(int type1) {
         this.type1 = type1;
     }
 
-    public float getValue1() {
+    public float getRawValue1() {
         return value1;
+    }
+
+    public String getValue1() {
+        return value1Str;
     }
 
     public void setValue1(float value1) {
         this.value1 = value1;
     }
 
+    public int getRawType2() {
+        return type2;
+    }
+
     public String getType2() {
-        if (skill_effect_type_table.containsKey((type2)))
-            return skill_effect_type_table.get(type2);
-        else
-            return "" + type2;
+        return type2Str;
     }
 
     public void setType2(int type2) {
         this.type2 = type2;
     }
 
-    public float getValue2() {
+    public float getRawValue2() {
         return value2;
+    }
+
+    public String getValue2() {
+        return value2Str;
     }
 
     public void setValue2(float value2) {
         this.value2 = value2;
     }
 
+    public int getRawType3() {
+        return type3;
+    }
+
     public String getType3() {
-        if (skill_effect_type_table.containsKey((type3)))
-            return skill_effect_type_table.get(type3);
-        else
-            return "" + type3;
+        return type3Str;
     }
 
     public void setType3(int type3) {
         this.type3 = type3;
     }
 
-    public float getValue3() {
+    public float getRawValue3() {
         return value3;
+    }
+
+    public String getValue3() {
+        return value3Str;
     }
 
     public void setValue3(float value3) {
@@ -395,14 +529,22 @@ public class SkillDataPO {
     }
 
     public String getIcon() {
-        for (int i : skill_icons_id) {
-            if (i == icon)
-                return Config.OSSPATH + "/skillicon/" + String.valueOf(icon) + ".png";
-        }
-        return Config.OSSPATH + "/skillicon/00000.png";
+        return iconStr;
     }
 
     public void setIcon(int icon) {
         this.icon = icon;
+    }
+
+    public String getStr1() {
+        return str1;
+    }
+
+    public String getStr2() {
+        return str2;
+    }
+
+    public String getStr3() {
+        return str3;
     }
 }

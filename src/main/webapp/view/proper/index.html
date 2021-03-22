@@ -12,10 +12,7 @@
             <tr>
                 <th class="flex-col" data-width="60">适性</th>
                 <th class="flex-col" data-width="100" data-type="number">速度</th>
-                <th class="flex-col" data-width="100" data-type="number">耐力</th>
                 <th class="flex-col" data-width="100" data-type="number">力量</th>
-                <th class="flex-col" data-width="100" data-type="number">根性</th>
-                <th class="flex-col" data-width="100" data-type="number">智力</th>
             </tr>
             </thead>
             <tbody>
@@ -23,26 +20,24 @@
             <tr>
                 <td><span class="hide">#(for.index)</span> #(list_rarity[for.index])</td>
                 <td>#(proper.getSpeed())%</td>
-                <td>#(proper.getStamina())%</td>
                 <td>#(proper.getPower())%</td>
-                <td>#(proper.getKonjyou())%</td>
-                <td>#(proper.getIq())%</td>
             </tr>
             #end
             </tbody>
         </table>
     </div>
     <div class="table-container">
-        <div class="center-parent"><h2>场地适性一览</h2></div>
+        <div class="center-parent">
+            <h2>
+                场地适性一览
+                <a data-toggle="tooltip" data-title="游戏数据库并没有指出具体影响哪个面板，数值仅供参考。" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a>
+            </h2>
+        </div>
         <table class="table datatable">
             <thead>
             <tr>
                 <th class="flex-col" data-width="60">适性</th>
-                <th class="flex-col" data-width="100" data-type="number">速度</th>
-                <th class="flex-col" data-width="100" data-type="number">耐力</th>
-                <th class="flex-col" data-width="100" data-type="number">力量</th>
-                <th class="flex-col" data-width="100" data-type="number">根性</th>
-                <th class="flex-col" data-width="100" data-type="number">智力</th>
+                <th class="flex-col" data-width="100" data-type="number">修正</th>
             </tr>
             </thead>
             <tbody>
@@ -50,26 +45,19 @@
             <tr>
                 <td><span class="hide">#(for.index)</span>#(list_rarity[for.index])</td>
                 <td>#(proper.getSpeed())%</td>
-                <td>#(proper.getStamina())%</td>
-                <td>#(proper.getPower())%</td>
-                <td>#(proper.getKonjyou())%</td>
-                <td>#(proper.getIq())%</td>
             </tr>
             #end
             </tbody>
         </table>
     </div>
     <div class="table-container">
-        <div class="center-parent"><h2>跑法适性一览</h2></div>
+        <div class="center-parent"><h2>跑法适性一览
+            <a data-toggle="tooltip" data-title="游戏数据库并没有指出具体影响哪个面板，数值仅供参考。" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a></h2></div>
         <table class="table datatable">
             <thead>
             <tr>
                 <th class="flex-col" data-width="60">适性</th>
-                <th class="flex-col" data-width="100" data-type="number">速度</th>
-                <th class="flex-col" data-width="100" data-type="number">耐力</th>
-                <th class="flex-col" data-width="100" data-type="number">力量</th>
-                <th class="flex-col" data-width="100" data-type="number">根性</th>
-                <th class="flex-col" data-width="100" data-type="number">智力</th>
+                <th class="flex-col" data-width="100" data-type="number">修正</th>
             </tr>
             </thead>
             <tbody>
@@ -77,10 +65,6 @@
             <tr>
                 <td><span class="hide">#(for.index)</span>#(list_rarity[for.index])</td>
                 <td>#(proper.getSpeed())%</td>
-                <td>#(proper.getStamina())%</td>
-                <td>#(proper.getPower())%</td>
-                <td>#(proper.getKonjyou())%</td>
-                <td>#(proper.getIq())%</td>
                 #end
             </tr>
             </tbody>

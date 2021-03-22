@@ -9,6 +9,25 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/css/zui.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/bootbox/bootbox.min.css" rel="stylesheet"/>
     <script>
+        function remove(id, deleted) {
+            $.confirm("真的要执行吗？", "确认", "取消", (result) => {
+                if (!result) {
+                    return;
+                }
+                let data = {id: id, deleted: deleted};
+                $.post1("/api/v1/announcement/remove", data, function (data) {
+                    if ("ok" === data.state) {
+                        $.ok("ok", () => {
+                            location.reload();
+                        });
+                    } else {
+                        $.error("fail");
+                    }
+                });
+            });
+        }
+    </script>
+    <script>
         var _hmt = _hmt || [];
         (function () {
             var hm = document.createElement("script");
@@ -53,6 +72,9 @@
                             #if(announcement.getUpdateTime()!=announcement.getCreateTime())
                             （#(_formatDate2(announcement.getUpdateTime()))）
                             #end
+                            #if(announcement.getDeleted())
+                            （已删除）
+                            #end
                         </a></h4>
                     </div>
                     <div class="item-content">
@@ -60,7 +82,13 @@
                     </div>
                     <div class="item-footer">
                         <span class="text-muted">#(_formatDate(announcement.getUpdateTime()))</span>
-                        <a href="/announcement/detail/#(announcement.getId())" target="_blank">查看详情</a>
+                        <a href="/announcement/modify/#(announcement.getId())" target="_blank">编辑</a>
+                        #if(announcement.getDeleted())
+                        <a onclick="remove(#(announcement.getId()),false);">恢复</a>
+                        #else
+                        <a onclick="remove(#(announcement.getId()),true);">删除</a>
+                        #end
+
                     </div>
                 </div>
                 #end
@@ -78,13 +106,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/bootbox/bootbox.min.js"></script>
 <script src="/js/res.js?#(_generateUuid())" charset="UTF-8"></script>
 <script src="/js/common.js?#(_generateUuid())"></script>
-<script src="/js/announcement/announcement.js?#(_generateUuid())"></script>
 <script>
     $('#pager-announcement').pager({
         page: #(page.getPageNumber()),
-        recPerPage:#(page.getPageSize()),
-        linkCreator:'/announcement/{page}',
-        lang:'zh_cn',
+        recPerPage: #(page.getPageSize()),
+        linkCreator: '/announcement/admin/{page}',
+        lang: 'zh_cn',
         recTotal: #(page.getTotalRow())
     });
 </script>
