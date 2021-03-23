@@ -1,0 +1,11 @@
+<iframe src="/comment/#(target1)-#(target2??0)-#(page_index??1)" frameborder="0" scrolling="no" id="iframe-comment" width="100%"></iframe>
+<script type="text/javascript">
+    function initIframe() {
+        let iframe = document.getElementById("iframe-comment");
+        let bHeight = iframe.contentWindow.document.body.scrollHeight;
+        let dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+        let height = Math.max(bHeight, dHeight);
+        iframe.height = height;
+    }
+    window.setInterval("initIframe()", 200);
+</script>

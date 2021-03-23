@@ -2,7 +2,6 @@ package fans.umamusume.www.common.api.v1;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
-import com.jfinal.ext.interceptor.POST;
 import com.jfinal.kit.Ret;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.ehcache.CacheName;
@@ -65,7 +64,7 @@ public class AnnouncementApi extends ApiV1 {
             renderJson(Ret.fail());
     }
 
-    @Clear({NeedLogin.class, POST.class})
+    @Clear(NeedLogin.class)
     @Before({NeedAdmin.class, EvictInterceptor.class})
     @CacheName("announcement")
     public void remove() {

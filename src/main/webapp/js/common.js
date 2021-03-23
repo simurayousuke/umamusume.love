@@ -81,6 +81,11 @@ let __shortUrlBase = "https://zhuangcloud.cn/s/";
         return "";
     };
 
+    $.getJFinalPara = function () {
+        let url = window.location.href;
+        return url.substring(url.lastIndexOf("\/") + 1, url.length);
+    }
+
     $.delPara = function (name) {
         let url = location.href;
         let para = location.search.substr(1);
@@ -231,7 +236,7 @@ let __shortUrlBase = "https://zhuangcloud.cn/s/";
 
     }
 
-    $.replace = function (str,a, b) {
+    $.replace = function (str, a, b) {
         let reg = new RegExp(a, "g");
         return str.replace(reg, b);
     }

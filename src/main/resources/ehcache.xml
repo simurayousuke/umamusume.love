@@ -49,4 +49,14 @@
             timeToLiveSeconds="3600"
             memoryStoreEvictionPolicy="LRU"/>
 
+    <cache
+            name="comment"
+            eternal="false"
+            maxElementsInMemory="5000"
+            overflowToDisk="false"
+            diskPersistent="false"
+            timeToIdleSeconds="600"
+            timeToLiveSeconds="3600"
+            memoryStoreEvictionPolicy="LRU"/>
+
 </ehcache>

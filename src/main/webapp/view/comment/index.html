@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>公告</title>
+    <link href="/css/common.css?#(_generateUuid())" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/css/zui.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/bootbox/bootbox.min.css" rel="stylesheet"/>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?d5cea37c3d7f0100bc8d4a0295f058cf";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div style="border:solid 1px;padding: 20px;margin: 20px 0;">
+    <h2>评论区</h2>
+    #if(page.getTotalRow()==0)
+    暂无评论
+    #else
+    #for(record:page.getList())
+    <div class="comment">
+        <div class="content">
+
+            <div class="pull-right text-muted">#(_formatDate(record.getDate("update_time")))</div>
+            <div><a href="#"><strong>#(record.getStr("username"))</strong></a></div>
+            <div class="text">#(record.getStr("content"))</div>
+        </div>
+    </div>
+    #end
+    <ul class="pager" id="pager-comment"></ul>
+    #end
+    <div>
+        #if(user==null)
+        <p>若要留言，请先<a href="/login" target="_parent">登录</a>或<a href="/reg" target="_parent">注册</a></p>
+        #else
+
+        <form id="form-comment">
+            <div class=" form-group">
+                <textarea class="form-control" placeholder="留条评论吧~" name="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="button-comment">留言</button>
+        </form>
+        #end
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/js/zui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/colorset.js/zui.colorset.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/bootbox/bootbox.min.js"></script>
+<script src="/js/res.js?#(_generateUuid())" charset="UTF-8"></script>
+<script src="/js/common.js?#(_generateUuid())"></script>
+<script>
+    let prefix = $.getJFinalPara();
+    prefix = prefix.substring(0, prefix.lastIndexOf('-') + 1);
+    let target1=prefix.substring(0,prefix.indexOf('-'));
+    let target2=prefix.substring(prefix.indexOf('-')+1,prefix.lastIndexOf('-'));
+    $('#pager-comment').pager({
+        page: #(page.getPageNumber()),
+        recPerPage: #(page.getPageSize()),
+        linkCreator: '/comment/' + prefix + '{page}',
+        lang: 'zh_cn',
+        recTotal: #(page.getTotalRow())
+    });
+    $("#form-comment").submit(function (e) {
+        e.preventDefault();
+        let button = $("#button-comment");
+        button.prop("disabled", true);
+        let data = $(this).serializeObject();
+        data.t1=target1;
+        data.t2=target2;
+        $.post1("/api/v1/comment/add", data, function (data) {
+            if ("ok" === data.state) {
+                $.ok("评论成功",()=>{
+                    location.reload();
+                });
+                button.prop("disabled", false);
+            }else{
+                $.error(data.msg);
+                button.prop("disabled", false);
+            }
+        }, button);
+    });
+</script>
+</body>
+</html>

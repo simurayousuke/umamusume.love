@@ -2,6 +2,7 @@ package fans.umamusume.www.common.route;
 
 import com.jfinal.config.Routes;
 import fans.umamusume.www.announcement.AnnouncementController;
+import fans.umamusume.www.comment.CommentController;
 import fans.umamusume.www.common.base.ErrorController;
 import fans.umamusume.www.common.base.ResJsController;
 import fans.umamusume.www.common.interceptor.ExceptionInterceptor;
@@ -32,8 +33,7 @@ public class FrontRoutes extends Routes {
         add("/js/res", ResJsController.class, "common");
         add("/proper", ProperController.class);
         add("/announcement", AnnouncementController.class);
-
-        //add("/target", TargetController.class);
+        add("/comment", CommentController.class);
         //add("/s", ShortUrlController.class,"shortUrl");
 
         //add("/fujishiro", FujishiroController.class);

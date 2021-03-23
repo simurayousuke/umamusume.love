@@ -20,7 +20,7 @@ public class NeedAdmin implements Interceptor {
     public void intercept(Invocation inv) {
         Controller controller = inv.getController();
         User user = controller.getAttr("user");
-        if (null != user && isAdmin(user.getUid()))
+        if (null != user && user.getPriority() == 999)
             inv.invoke();
         else
             controller.renderError(403);
