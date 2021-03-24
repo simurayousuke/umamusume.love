@@ -1,6 +1,5 @@
 package fans.umamusume.www.common;
 
-import fans.umamusume.www.common.kit.JsoupKit;
 import fans.umamusume.www.common.po.ProperPO;
 import fans.umamusume.www.common.po.SuccessionRelationPO;
 import fans.umamusume.www.common.po.TextSet;
@@ -50,8 +49,9 @@ public class Test {
 
     public static void main(String[] args) {
 //        printAllProperTable();
-        String testHtml = "<div class='div'style='height: 100px;'><a href='\\test'>aaa</a>div 标签的内容 </div><p class='div'style='width: 50px;'>p 标签的内容 </p>";
-        System.out.println(JsoupKit.clean(testHtml));// 输出:   div 标签的内容 < p>p 标签的内容 </p>
+        //String testHtml = "<div class='div'style='height: 100px;'><a href='\\test'>aaa</a>div 标签的内容 </div><p class='div'style='width: 50px;'>p 标签的内容 </p>";
+        //System.out.println(JsoupKit.clean(testHtml));// 输出:   div 标签的内容 < p>p 标签的内容 </p>
+        System.out.println(String.format("%.1f",3.3205f));
     }
 
 }

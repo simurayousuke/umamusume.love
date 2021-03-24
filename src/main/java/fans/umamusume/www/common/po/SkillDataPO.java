@@ -294,7 +294,7 @@ public class SkillDataPO {
         if (duration == -1)
             durationStr = "瞬间生效";
         else
-            durationStr = (int) Math.floor(duration / 10000) + "秒";
+            durationStr = String.format("%.1f", Math.floor(duration / 10000)) + "秒";
         if (cooldown == 0)
             cooldownStr = "常驻";
         else
@@ -342,7 +342,7 @@ public class SkillDataPO {
             str1 = "";
         } else {
             str1 = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + type1 + ":" + value1 + "\" " +
-                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" +type1Str + ":" + value1Str;
+                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" + type1Str + ":" + value1Str;
         }
         switch (type2) {
             case 0:
@@ -367,7 +367,7 @@ public class SkillDataPO {
             str2 = "";
         } else {
             str2 = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + type2 + ":" + value2 + "\" " +
-                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" +type2Str + ":" + value2Str;
+                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" + type2Str + ":" + value2Str;
         }
         switch (type3) {
             case 0:

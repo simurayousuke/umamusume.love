@@ -59,7 +59,7 @@
                     <span class="input-group-addon">等级</span>
                     <input type="number" class="form-control" id="input-lv" name="lv" value="50" step="1"
                            style="width: 55px;"
-                           oninput="if(value > 50){value=50;}else if(value < 1 ){value = 1}$('#form-calc').submit();">
+                           onchange="if(value > 50){value=50;}else if(value < 1 ){value = 1}$('#form-calc').submit();">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" id="button-calc">计算</button>
