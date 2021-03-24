@@ -294,11 +294,11 @@ public class SkillDataPO {
         if (duration == -1)
             durationStr = "瞬间生效";
         else
-            durationStr = String.format("%.1f", Math.floor(duration / 10000)) + "秒";
+            durationStr = String.format("%.1f", duration / 10000f) + "秒";
         if (cooldown == 0)
             cooldownStr = "常驻";
         else
-            cooldownStr = (int) Math.floor(cooldown / 10000) + "秒";
+            cooldownStr = String.format("%.1f", cooldown / 10000f) + "秒";
         if (skill_effect_type_table.containsKey((type1)))
             type1Str = skill_effect_type_table.get(type1);
         else
