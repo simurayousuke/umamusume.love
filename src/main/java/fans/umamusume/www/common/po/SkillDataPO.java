@@ -145,7 +145,7 @@ public class SkillDataPO {
     }};
 
     private static final Map<String, String> condition_special_table = new HashMap<String, String>() {{
-        put("corner_random==1@corner_random==2@corner_random==3@corner_random==4", "任意弯道");
+        put("corner_random==1@corner_random==2@corner_random==3@corner_random==4", "任意弯道随机判定");
 
         put("is_finalcorner==1&corner==0", "最终直线");
         put("is_finalcorner==1&corner!=0", "最终弯道");
@@ -153,7 +153,7 @@ public class SkillDataPO {
         put("change_order_onetime<0", "超过一人");
         put("phase>=2", "比赛后期");
         put("corner!=0", "弯道");
-        put("phase_random==1", "比赛中期");
+        put("phase_random==1", "比赛中期随机判定");
         put("is_overtake==1", "与前马距离缩小");
         put("is_finalcorner==1", "最终弯道及以后");//待确定
         put("corner==0", "非弯道");
@@ -190,21 +190,21 @@ public class SkillDataPO {
         put("running_style_count_same<=1", "没有与自己跑法相同的马");
         put("running_style_equal_popularity_one==1", "和人气第一的马跑法相同");
         put("grade==100", "GI比赛");
-        put("straight_random==1", "直线");
+        put("straight_random==1", "直线随机判定");
         put("slope==1", "上坡");
         put("is_lastspurt==1", "正在最终冲刺");//待确定
         put("always==1", "常驻");
         put("phase==0", "比赛初期");
-        put("phase_random==0", "比赛初期");
+        put("phase_random==0", "比赛初期随机判定");
         put("phase==1", "比赛中期");
         put("change_order_onetime>0", "被超过");
-        put("phase_random==2", "比赛后期");
-        put("phase_random==3", "最终冲刺时期");
+        put("phase_random==2", "比赛后期随机判定");
+        put("phase_random==3", "最终冲刺时期随机判定");
         put("running_style==1", "逃");
         put("running_style==2", "先行");
         put("running_style==3", "差");
         put("running_style==4", "追");
-        put("is_finalcorner_random==1", "最终弯道");
+        put("is_finalcorner_random==1", "最终弯道随机判定");
         put("is_behind_in==1", "从外侧");
         put("distance_type==1", "短距离");
         put("distance_type==2", "英里");
@@ -214,10 +214,10 @@ public class SkillDataPO {
         put("is_hp_empty_onetime==1", "持久力用尽");
         put("is_temptation==0", "当前没有掛る");
         put("track_id==10101", "大井赛场");
-        put("corner_random==1", "在弯道1处");
-        put("corner_random==2", "在弯道2处");
-        put("corner_random==3", "在弯道3处");
-        put("corner_random==4", "在弯道4处");
+        put("corner_random==1", "在弯道1处随机判定");
+        put("corner_random==2", "在弯道2处随机判定");
+        put("corner_random==3", "在弯道3处随机判定");
+        put("corner_random==4", "在弯道4处随机判定");
         put("is_move_lane==1", "正在向左变道");//方向待确定
         put("is_move_lane==2", "正在向右变道");//方向待确定
         put("phase==2", "比赛后期");

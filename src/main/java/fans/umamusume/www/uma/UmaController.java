@@ -3,14 +3,26 @@ package fans.umamusume.www.uma;
 import fans.umamusume.www.common.base.MyController;
 import fans.umamusume.www.common.po.SuccessionRelationPO;
 import fans.umamusume.www.common.po.TextSet;
+import fans.umamusume.www.common.po.UmaPO;
 
 import java.util.Map;
 
 public class UmaController extends MyController {
 
     public void index(){
-        title("建设中");
+        title("马娘一览");
+        set("umas", UmaPO.getAllUmaList());
         render("index.html");
+    }
+
+    public void detail(){
+        UmaPO uma=UmaPO.getUma(getParaToInt());
+        if(uma==null)
+            title("马娘不存在");
+        else
+            title(uma.getCardName());
+        set("uma",uma);
+        render("detail.html");
     }
 
     public void relation(){

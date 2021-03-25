@@ -1,0 +1,139 @@
+#@layout()
+#define main()
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/">主页</a></li>
+        <li><a href="/uma">马娘一览</a></li>
+        #if(uma==null)
+        <li class="active">马娘不存在</li>
+        #else
+        <li class="active">#(uma.getCardName())</li>
+        #end
+    </ol>
+    #if(uma==null)
+    <div>马娘不存在</div>
+    #else
+    <div class="center-parent"><h2>基础数据</h2></div>
+    <div class="center-parent" style="margin: 20px 0;">
+        <img src="//#(uma.getIcon())" class="img-rounded" width="100px">
+        <span class="hide">#(uma.getId())</span>
+    </div>
+    <div class="center-parent">
+        <table class="table table-auto table-bordered table-hover">
+            <tbody>
+            <tr>
+                <td>卡名</td>
+                <td>#(uma.getCardName())</td>
+            </tr>
+            <tr>
+                <td>角色名</td>
+                <td>#(uma.getUmaName())</td>
+            </tr>
+            <tr>
+                <td>稀有度</td>
+                <td>
+                    #for(star = uma.getRarity(),i=0; i < 5; i++)
+                    #if(star-->0)
+                    <i class="icon icon-star"></i>
+                    #else
+                    <i class="icon icon-star-empty"></i>
+                    #end
+                    #end
+                </td>
+            </tr>
+            <tr>
+                <td>限定角色</td>
+                <td>
+                    #if(uma.getLimited()==0)
+                    非限定角色
+                    #else
+                    限定角色
+                    #end
+                </td>
+            </tr>
+            <tr>
+                <td>默认跑法</td>
+                <td>#(uma.getRunningStyle())</td>
+            </tr>
+            #if(uma.getTalentSpeed()>0)
+            <tr>
+                <td>速度训练加成</td>
+                <td>#(uma.getTalentSpeed())</td>
+            </tr>
+            #end
+            #if(uma.getTalentStamina()>0)
+            <tr>
+                <td>耐力训练加成</td>
+                <td>#(uma.getTalentStamina())</td>
+            </tr>
+            #end
+            #if(uma.getTalentPow()>0)
+            <tr>
+                <td>力量训练加成</td>
+                <td>#(uma.getTalentPow())</td>
+            </tr>
+            #end
+            #if(uma.getTalentGuts()>0)
+            <tr>
+                <td>根性训练加成</td>
+                <td>#(uma.getTalentGuts())</td>
+            </tr>
+            #end
+            #if(uma.getTalentWiz()>0)
+            <tr>
+                <td>智力训练加成</td>
+                <td>#(uma.getTalentWiz())</td>
+            </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="center-parent"><h2>技能组</h2></div>
+    <div class="center-parent" style="margin-bottom: 50px;">
+        #setLocal(skillSet=uma.getSkillSet())
+        #if(null==skillSet)
+        没有技能
+        #else
+        <table>
+            #for(s:skillSet)
+            #setLocal(skill=s.getSkill())
+
+            <tr>
+                <td><a href="/skill/detail/#(skill.getId())" target="_blank"><img src="//#(skill.getIcon())" width="30px" class="img-rounded"></a></td>
+                <td><a href="/skill/detail/#(skill.getId())" target="_blank">#(skill.getName())</a></td>
+                <td>Rank#(s.getRank()) 解锁</td>
+            </tr>
+            #else
+            <tr>
+                <td>没有技能</td>
+            </tr>
+            #end
+        </table>
+        #end
+    </div>
+    <hr>
+    <div class="center-parent"><h2>觉醒材料计算器</h2></div>
+    <div class="center-parent">
+        絶賛開発中！
+    </div>
+    <hr>
+    #end
+    #include("/view/comment/commentFrame.html",target1=6,target2=uma.getId())
+</div>
+#end
+
+#define css()
+<style type="text/css">
+    td {
+        border: 1px solid #ddd;
+        padding: 4px 10px;
+    }
+</style>
+#end
+
+#define lib()
+#end
+
+#define js()
+#end

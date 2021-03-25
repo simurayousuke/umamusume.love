@@ -5,12 +5,56 @@
         <li><a href="/">主页</a></li>
         <li class="active">马娘一览</li>
     </ol>
-    施工中...
+    <div class="cards">
+        #for(uma:umas)
+        <div class="col-md-2 col-xs-4 col-sm-3">
+            <div class="card">
+                <a class="card" href="/uma/detail/#(uma.getId())" >
+                    <div class="img-container">
+                    <img src="//#(uma.getIcon())" alt="" width="100px">
+                    </div>
+                    <div class="card-heading">
+                        <strong>
+                        #for(star = uma.getRarity(),i=0; i < 5; i++)
+                        #if(star-->0)
+                        <i class="icon icon-star"></i>
+                        #else
+                        <i class="icon icon-star-empty"></i>
+                        #end
+                        #end
+                        </strong>
+                    </div>
+                    <div class="card-content text-muted">#(uma.getUmaName())</div>
+                </a>
+            </div>
+        </div>
+        #end
+    </div>
+    #include("/view/comment/commentFrame.html",target1=8)
 </div>
 #end
 
 #define css()
-
+<style type="text/css">
+    .card {
+        margin-bottom: 0 !important;
+        text-align: center;
+        border: 0 !important;
+    }
+    .col-md-2{
+        margin-bottom: 10px;
+        height: 200px !important;
+    }
+    .img-container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .card-heading{
+        overflow: auto!important;
+    }
+</style>
 #end
 
 #define lib()
