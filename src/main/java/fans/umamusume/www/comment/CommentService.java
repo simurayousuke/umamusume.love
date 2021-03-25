@@ -11,8 +11,8 @@ public class CommentService {
 
     public static Page<Record> getComment(int target1, int target2, int page) {
         return Db.paginateByCache("comment", "comment" + target1 + "-" + target2 + "-" + page, page, PAGE_SIZE,
-                "select id, a.uid uid, target1, target2, content, a.priority, deleted, a.create_time create_time, a.update_time update_time,b.username username",
-                "from t_comment a left join t_user b on b.uid = a.uid where target1=? and target2=? and deleted=0 order by priority desc,update_time desc",
+                "select id, a.uid uid, target1, target2, content, a.priority, deleted, a.create_time create_time, a.update_time update_time,b.username username,b.priority priority",
+                "from t_comment a left join t_user b on b.uid = a.uid where target1=? and target2=? and deleted=0 order by a.priority desc,update_time desc",
                 target1, target2);
     }
 

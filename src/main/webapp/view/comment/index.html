@@ -29,7 +29,18 @@
         <div class="content">
 
             <div class="pull-right text-muted">#(_formatDate(record.getDate("update_time")))</div>
-            <div><a href="#"><strong>#(record.getStr("username"))</strong></a></div>
+            <div><a href="#"><strong>#(record.getStr("username"))</strong>
+                #setLocal(priority=record.getInt("priority"))
+                #if(priority==0)
+                <span class="label label-primary">注册会员</span>
+                #else if(priority==999)
+                <span class="label label-success">管理员</span>
+                #else if(priority<0)
+                <span class="label">封禁用户</span>
+                #else if(priority>100&&priority<200)
+                <span class="label label-danger">Vip#(priority-100)</span>
+                #end
+            </a></div>
             <div class="text">#(record.getStr("content"))</div>
         </div>
     </div>
@@ -60,8 +71,8 @@
 <script>
     let prefix = $.getJFinalPara();
     prefix = prefix.substring(0, prefix.lastIndexOf('-') + 1);
-    let target1=prefix.substring(0,prefix.indexOf('-'));
-    let target2=prefix.substring(prefix.indexOf('-')+1,prefix.lastIndexOf('-'));
+    let target1 = prefix.substring(0, prefix.indexOf('-'));
+    let target2 = prefix.substring(prefix.indexOf('-') + 1, prefix.lastIndexOf('-'));
     $('#pager-comment').pager({
         page: #(page.getPageNumber()),
         recPerPage: #(page.getPageSize()),
@@ -74,15 +85,15 @@
         let button = $("#button-comment");
         button.prop("disabled", true);
         let data = $(this).serializeObject();
-        data.t1=target1;
-        data.t2=target2;
+        data.t1 = target1;
+        data.t2 = target2;
         $.post1("/api/v1/comment/add", data, function (data) {
             if ("ok" === data.state) {
-                $.ok("评论成功",()=>{
+                $.ok("评论成功", () => {
                     location.reload();
                 });
                 button.prop("disabled", false);
-            }else{
+            } else {
                 $.error(data.msg);
                 button.prop("disabled", false);
             }
