@@ -29,7 +29,7 @@
         <div class="content">
 
             <div class="pull-right text-muted">#(_formatDate(record.getDate("update_time")))</div>
-            <div><a href="#"><strong>#(record.getStr("username"))</strong>
+            <div><a href="#"><strong>#(record.getStr("username"))</strong></a>
                 #setLocal(priority=record.getInt("priority"))
                 #if(priority==0)
                 <span class="label label-primary">注册会员</span>
@@ -40,7 +40,7 @@
                 #else if(priority>100&&priority<200)
                 <span class="label label-danger">Vip#(priority-100)</span>
                 #end
-            </a></div>
+            </div>
             <div class="text">#(record.getStr("content"))</div>
         </div>
     </div>
