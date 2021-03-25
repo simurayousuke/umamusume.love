@@ -11,6 +11,7 @@ import fans.umamusume.www.login.LoginController;
 import fans.umamusume.www.proper.ProperController;
 import fans.umamusume.www.reg.RegController;
 import fans.umamusume.www.skill.SkillController;
+import fans.umamusume.www.statistic.StatisticController;
 import fans.umamusume.www.supportcard.SupportCardController;
 import fans.umamusume.www.uma.UmaController;
 import fans.umamusume.www.version.VersionController;
@@ -34,7 +35,7 @@ public class FrontRoutes extends Routes {
         add("/proper", ProperController.class);
         add("/announcement", AnnouncementController.class);
         add("/comment", CommentController.class);
-        //add("/s", ShortUrlController.class,"shortUrl");
+        add("/statistic", StatisticController.class);
 
         //add("/fujishiro", FujishiroController.class);
     }
