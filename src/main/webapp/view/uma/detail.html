@@ -100,7 +100,9 @@
             #setLocal(skill=s.getSkill())
 
             <tr>
-                <td><a href="/skill/detail/#(skill.getId())" target="_blank"><img src="//#(skill.getIcon())" width="30px" class="img-rounded"></a></td>
+                <td><a href="/skill/detail/#(skill.getId())" target="_blank"><img src="//#(skill.getIcon())"
+                                                                                  width="30px" class="img-rounded"></a>
+                </td>
                 <td><a href="/skill/detail/#(skill.getId())" target="_blank">#(skill.getName())</a></td>
                 <td>Rank#(s.getRank()) 解锁</td>
             </tr>
@@ -113,9 +115,48 @@
         #end
     </div>
     <hr>
-    <div class="center-parent"><h2>觉醒材料计算器</h2></div>
+    <div class="center-parent"><h2>觉醒材料</h2></div>
     <div class="center-parent">
-        絶賛開発中！
+        <table class="table datatable">
+            <thead>
+            <tr>
+                <th class="flex-col" data-width="50">Rank</th>
+                <th class="flex-col" data-width="100">材料1</th>
+                <th class="flex-col" data-width="50">数量1</th>
+                <th class="flex-col" data-width="100">材料2</th>
+                <th class="flex-col" data-width="50">数量2</th>
+                <th class="flex-col" data-width="100">材料3</th>
+                <th class="flex-col" data-width="50">数量3</th>
+                <th class="flex-col" data-width="100">材料4</th>
+                <th class="flex-col" data-width="50">数量4</th>
+                <th class="flex-col" data-width="100">材料5</th>
+                <th class="flex-col" data-width="50">数量5</th>
+                <th class="flex-col" data-width="100">材料6</th>
+                <th class="flex-col" data-width="50">数量6</th>
+            </tr>
+            </thead>
+            <tbody>
+            #for(talentUpgrade:uma.getTalentUpgrade())
+            <tr>
+                <td>#(talentUpgrade.getTalentLevel())</td>
+                #setLocal(count=6)
+                #for(itemSet:talentUpgrade.getItems())
+                <td>#(itemSet.getItem().getName())</td>
+                <td>#(itemSet.getNum())</td>
+                #setLocal(count--)
+                #end
+                #for(i=0;i<count;++i)
+                <td></td><td></td>
+                #end
+            </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="center-parent"><h2>其他面板</h2></div>
+    <div class="center-parent">
+        开发中...
     </div>
     <hr>
     #end
@@ -124,16 +165,25 @@
 #end
 
 #define css()
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.css"/>
 <style type="text/css">
     td {
         border: 1px solid #ddd;
         padding: 4px 10px;
     }
+    .table-datatable td,th{
+        text-align: center;
+    }
 </style>
 #end
 
 #define lib()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zui/1.9.2/lib/datatable/zui.datatable.min.js"></script>
+<script src="/js/datatable.js?#(_generateUuid())"></script>
 #end
 
 #define js()
+<script>
+    init_datatable({sortable:false,fixedHeader:true});
+</script>
 #end

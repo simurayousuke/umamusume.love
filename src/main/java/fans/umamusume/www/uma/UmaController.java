@@ -5,13 +5,15 @@ import fans.umamusume.www.common.po.SuccessionRelationPO;
 import fans.umamusume.www.common.po.TextSet;
 import fans.umamusume.www.common.po.UmaPO;
 
+import java.util.List;
 import java.util.Map;
 
 public class UmaController extends MyController {
 
     public void index(){
         title("马娘一览");
-        set("umas", UmaPO.getAllUmaList());
+        List<UmaPO> umas=UmaPO.getAllUmaList();
+        set("umas", umas);
         render("index.html");
     }
 

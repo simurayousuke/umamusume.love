@@ -20,7 +20,7 @@ function init_datatable(config) {
             if (e.targetTouches.length > 1 || e.scale && e.scale !== 1) return;
             let dx = (e.changedTouches[0].pageX - startx) ;
             let left = parseInt(this.style.left) + dx;
-            let min = parseInt(document.body.offsetWidth) - parseInt(this.offsetWidth);
+            let min = parseInt(document.body.offsetWidth) - parseInt(this.offsetWidth)-100;
             if (left < min) {
                 left = min;
             } else if (left > 0) {

@@ -25,6 +25,7 @@ public class UmaPO {
     private int talentGuts;
     private int talentWiz;
     private int talentGroupId;
+    private List<TalentUpgradePO> talentUpgrade;
     private int bgId;
     private int getPieceId;
     private int rawRunningStyle;
@@ -102,6 +103,7 @@ public class UmaPO {
         talentGuts = rs.getInt(11);
         talentWiz = rs.getInt(12);
         talentGroupId = rs.getInt(13);
+        talentUpgrade=TalentUpgradePO.getTalentUpgradeData(talentGroupId);
         bgId = rs.getInt(14);
         getPieceId = rs.getInt(15);
         rawRunningStyle = rs.getInt(16);
@@ -208,5 +210,9 @@ public class UmaPO {
 
     public String getIcon() {
         return icon;
+    }
+
+    public List<TalentUpgradePO> getTalentUpgrade() {
+        return talentUpgrade;
     }
 }
