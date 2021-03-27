@@ -1,6 +1,7 @@
 package fans.umamusume.www.common.route;
 
 import com.jfinal.config.Routes;
+import fans.umamusume.www.admin.AdminController;
 import fans.umamusume.www.announcement.AnnouncementController;
 import fans.umamusume.www.comment.CommentController;
 import fans.umamusume.www.common.base.ErrorController;
@@ -10,6 +11,7 @@ import fans.umamusume.www.index.IndexController;
 import fans.umamusume.www.login.LoginController;
 import fans.umamusume.www.proper.ProperController;
 import fans.umamusume.www.reg.RegController;
+import fans.umamusume.www.simulate.SimulateController;
 import fans.umamusume.www.skill.SkillController;
 import fans.umamusume.www.statistic.StatisticController;
 import fans.umamusume.www.supportcard.SupportCardController;
@@ -36,7 +38,7 @@ public class FrontRoutes extends Routes {
         add("/announcement", AnnouncementController.class);
         add("/comment", CommentController.class);
         add("/statistic", StatisticController.class);
-
-        //add("/fujishiro", FujishiroController.class);
+        add("/admin", AdminController.class);
+        add("/simulate", SimulateController.class);
     }
 }

@@ -37,8 +37,23 @@ public class CommentApi extends ApiV1 {
         }
     }
 
+    @Before(EvictInterceptor.class)
+    @CacheName("comment")
     public void remove() {
-
+        Integer id = getInt("id");
+        Boolean deleted = getBoolean("deleted", true);
+        if (null != id) {
+            Comment comment = Comment.dao.findById(id);
+            if (null != comment) {
+                comment.setDeleted(deleted);
+                if (comment.update())
+                    renderJson(Ret.ok());
+                else
+                    renderJson(Ret.fail());
+            } else
+                renderJson(Ret.ok());
+        } else
+            renderJson(Ret.ok());
     }
 
 }

@@ -34,13 +34,14 @@
                     </ul>
                 </li>
                 <li><a href="/proper">适性修正效果</a></li>
-                <li><a href="/comment/comment">*留言板*</a></li>
+                <li><a href="/simulate">~育成模拟~</a></li>
                 <li><a href="/statistic/factor" style="color: #ff3300;font-weight: bold;">因子统计</a></li>
                 <!--<li><a href="/assemble">智能配卡(施工中)</a></li>
                 <li><a href="/character">角色信息(施工中)</a></li>
                 <li><a href="/gacha">模拟抽卡(施工中)</a></li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="/comment/comment">*留言板*</a></li>
                 <li><a href=mailto:feedback@umamusume.love>意见反馈</a></li>
                 <li><a href="/version">版本记录</a></li>
                 #if(user)
@@ -56,8 +57,11 @@
                         <li><a href="/share/create">#(_res.get("share"))</a></li>
                         <li><a href="/upload/mine">#(_res.get("myUpload"))</a></li>
                         <li class="divider"></li>
-                        <li><a href="/s">#(_res.get("shortUrl"))</a></li>
-                        <li class="divider"></li>-->
+                        <li><a href="/s">#(_res.get("shortUrl"))</a></li>-->
+                        #if(user.getPriority()==999)
+                        <li><a href="/admin">管理后台</a></li>
+                        #end
+                        <li class="divider"></li>
                         <li><a href="/logout">#(_res.get("logout"))</a></li>
                     </ul>
                 </li>

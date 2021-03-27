@@ -1,0 +1,332 @@
+#@layout()
+#define main()
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/">主页</a></li>
+        <li class="active">育成模拟</li>
+    </ol>
+    <div>
+        <form id="form-simulate-calculate">
+            <div class="panel-group" id="accordionPanels" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="headingOne">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordionPanels" href="#collapseOne">
+                                基础面板
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="center-parent"><h2>基础面板</h2></div>
+                            <div class="form-group">
+                                <label for="input-speed">速度</label>
+                                <input type="number" class="form-control" id="input-speed" name="speed" value="1200">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-stamina">耐力</label>
+                                <input type="number" class="form-control" id="input-stamina" name="stamina"
+                                       value="1200">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-pow">力量</label>
+                                <input type="number" class="form-control" id="input-pow" name="pow" value="1200">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-guts">根性</label>
+                                <input type="number" class="form-control" id="input-guts" name="guts" value="1200">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-wiz">智力</label>
+                                <input type="number" class="form-control" id="input-wiz" name="wiz" value="1200">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPanels"
+                               href="#collapseTwo">
+                                其他面板
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="center-parent"><h2>其他面板</h2></div>
+                            <div class="form-group">
+                                <label for="input-motivation">干劲</label>&nbsp;
+                                <select class="form-control" id="input-motivation" name="motivationCoef">
+                                    <option value="1.1">绝好调</option>
+                                    <option value="1.05">好调</option>
+                                    <option value="1.0">普通</option>
+                                    <option value="0.95">不调</option>
+                                    <option value="0.9">绝不调</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-running-style">跑法</label>&nbsp;
+                                <select class="form-control" id="input-running-style" name="runningStyle">
+                                    <option value="1">逃</option>
+                                    <option value="2">先行</option>
+                                    <option value="3">差</option>
+                                    <option value="4">追</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-proper-running-style">跑法适性</label>&nbsp;
+                                <select class="form-control" id="input-proper-running-style"
+                                        name="properRunningStyleCoef">
+                                    <option value="1.1">S</option>
+                                    <option value="1.0">A</option>
+                                    <option value="0.85">B</option>
+                                    <option value="0.75">C</option>
+                                    <option value="0.6">D</option>
+                                    <option value="0.4">E</option>
+                                    <option value="0.2">F</option>
+                                    <option value="0.1">G</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-proper-distance">距离适性</label>&nbsp;
+                                <select class="form-control" id="input-proper-distance" name="properDistanceCoef">
+                                    <option value="1.05">S</option>
+                                    <option value="1.0">A</option>
+                                    <option value="0.9">B</option>
+                                    <option value="0.8">C</option>
+                                    <option value="0.6">D</option>
+                                    <!--<option value="0.4">E</option>
+                                    <option value="0.2">F</option>
+                                    <option value="0.1">G</option>-->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-proper-ground">场地适性</label>&nbsp;
+                                <select class="form-control" id="input-proper-ground" name="properGroundTypeCoef">
+                                    <option value="1.05">S</option>
+                                    <option value="1.0">A</option>
+                                    <option value="0.9">B</option>
+                                    <option value="0.8">C</option>
+                                    <option value="0.7">D</option>
+                                    <option value="0.5">E</option>
+                                    <option value="0.3">F</option>
+                                    <option value="0.1">G</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPanels"
+                               href="#collapseThree">
+                                赛场相关
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="center-parent"><h2>赛场相关</h2></div>
+                            <div class="form-group">
+                                <label for="input-distance">赛道长度</label>
+                                <input type="number" class="form-control" id="input-distance" name="distance"
+                                       value="2000">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-ground">赛场类型</label>&nbsp;
+                                <select class="form-control" id="input-ground" name="ground">
+                                    <option value="1">草地</option>
+                                    <option value="2">泥地</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-ground-type">场地状态</label>&nbsp;
+                                <select class="form-control" id="input-ground-type" name="groundType">
+                                    <option value="1">良</option>
+                                    <option value="2">稍重</option>
+                                    <option value="3">重</option>
+                                    <option value="4">不良</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="headingFour">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPanels"
+                               href="#collapseFour">
+                                高级设置
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="center-parent"><h2>高级设置</h2></div>
+                            <div class="form-group">
+                                <label for="input-baseSpeedCoef">baseSpeedCoef</label>
+                                <input type="number" class="form-control" id="input-baseSpeedCoef" name="baseSpeedCoef"
+                                       value="1.0">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-frontBlockSpeed">frontBlockSpeed</label>
+                                <input type="number" class="form-control" id="input-frontBlockSpeed"
+                                       name="frontBlockSpeed" value="30.0">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-hpDecRate">hpDecRate</label>
+                                <input type="number" class="form-control" id="input-hpDecRate" name="hpDecRate"
+                                       value="1.0">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-startRate">初期赛道占比</label>
+                                <input type="number" class="form-control" id="input-startRate" name="startRate"
+                                       value="0.2">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-middleRate">中期赛道占比</label>
+                                <input type="number" class="form-control" id="input-middleRate" name="middleRate"
+                                       value="0.4">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-endRate">后期赛道占比</label>
+                                <input type="number" class="form-control" id="input-endRate" name="endRate" value="0.2">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-spurtRate">冲刺赛道占比</label>
+                                <input type="number" class="form-control" id="input-spurtRate" name="spurtRate"
+                                       value="0.2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="button-submit" type="submit" class="btn btn-primary btn-block">计算</button>
+        </form>
+    </div>
+    <div>
+        <div class="center-parent"><h2>计算结果</h2></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>数值</th>
+                <th>属性</th>
+                <th>数值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>目标速度(m/s)</td>
+                <td id="targetSpeed">23.903894</td>
+                <td>实际加速度</td>
+                <td id="a">0.5118144</td>
+            </tr>
+            <tr>
+                <td>实际速度(m/s)</td>
+                <td id="currentSpeed">23.903894</td>
+                <td>实际冲刺速度(m/s)</td>
+                <td id="currentSpurtSpeed">27.015139</td>
+            </tr>
+            <tr>
+                <td>最大速度(m/s)</td>
+                <td id="maxTargetSpeed">30</td>
+                <td>最小速度(m/s)</td>
+                <td id="minTargetSpeed">17.51381</td>
+            </tr>
+            <tr>
+                <td>总持久力(hp)</td>
+                <td id="hp">3003.2</td>
+                <td>预计全程消耗持久力(hp)</td>
+                <td id="totalHpDec">3130.079</td>
+            </tr>
+            <tr>
+                <td>持久力消耗速率参考值(hp/s)</td>
+                <td id="hpDecRPS">35.129704</td>
+                <td>冲刺时持久力消耗速率参考值(hp/s)</td>
+                <td id="hpSpurtDecRPS">61.504658</td>
+            </tr>
+            <tr>
+                <td>预计全程耗时(s)</td>
+                <td id="totalTime">84.262566</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>初期</th>
+                <th>中期</th>
+                <th>后期</th>
+                <th>冲刺</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>速度(m/s)</td>
+                <td id="startSpeed">23.903894</td>
+                <td id="middleSpeed">23.425817</td>
+                <td id="endSpeed">22.995546</td>
+                <td id="spurtSpeed">25.988564</td>
+            </tr>
+            <tr>
+                <td>加速度(m/s²)</td>
+                <td id="startA">0.5118144</td>
+                <td id="middleA">0.5118144</td>
+                <td id="endA">0.5097672</td>
+                <td id="spurtA">0.5097672</td>
+            </tr>
+            <tr>
+                <td>加速耗时(s)</td>
+                <td id="startAccTime">0.9751989</td>
+                <td id="middleAccTime">0.59759617</td>
+                <td id="endAccTime">0.43027115</td>
+                <td id="spurtAccTime">2.9356709</td>
+            </tr>
+            <tr>
+                <td>剩余耗时(s)</td>
+                <td id="startRemainTime">16.246077</td>
+                <td id="middleRemainTime">33.54666</td>
+                <td id="endRemainTime">16.960377</td>
+                <td id="spurtRemainTime">12.570716</td>
+            </tr>
+            <tr>
+                <td>加速时位移量(m)</td>
+                <td id="startAccDistance">11.655526</td>
+                <td id="middleAccDistance">14.142036</td>
+                <td id="endAccDistance">9.986877</td>
+                <td id="spurtAccDistance">73.305145</td>
+            </tr>
+            <tr>
+                <td>持久力消耗量(hp)</td>
+                <td id="startHpDec">604.9783</td>
+                <td id="middleHpDec">1128.448</td>
+                <td id="endHpDec">543.1351</td>
+                <td id="spurtHpDec">853.5178</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    #include("/view/comment/commentFrame.html",target1=9)
+</div>
+#end
+
+#define css()
+<style type="text/css">
+    form{
+        margin-bottom: 20px;
+    }
+</style>
+#end
+
+#define lib()
+#end
+
+#define js()
+<script src="/js/simulate/calculate.js?#(_generateUuid())"></script>
+#end

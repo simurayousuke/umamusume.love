@@ -17,6 +17,25 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
+    <script>
+        function remove(id, deleted = true) {
+            $.confirm("真的要执行吗？", "确认", "取消", (result) => {
+                if (!result) {
+                    return;
+                }
+                let data = {id: id, deleted: deleted};
+                $.post1("/api/v1/comment/remove", data, function (data) {
+                    if ("ok" === data.state) {
+                        $.ok("ok", () => {
+                            location.reload();
+                        });
+                    } else {
+                        $.error("fail");
+                    }
+                });
+            });
+        }
+    </script>
 </head>
 <body>
 <div style="border:solid 1px;padding: 20px;margin: 20px 0;">
@@ -42,6 +61,11 @@
                 #end
             </div>
             <div class="text">#(record.getStr("content"))</div>
+            #if(user!=null&&user.getPriority()==999)
+            <div class="actions">
+                <a onclick='remove(#(record.getInt("id")))'>删除</a>
+            </div>
+            #end
         </div>
     </div>
     #end
@@ -51,7 +75,6 @@
         #if(user==null)
         <p>若要留言，请先<a href="/login" target="_parent">登录</a>或<a href="/reg" target="_parent">注册</a></p>
         #else
-
         <form id="form-comment">
             <div class=" form-group">
                 <textarea class="form-control" placeholder="留条评论吧~" name="content"></textarea>
