@@ -1,11 +1,11 @@
 package fans.umamusume.www.common.base;
 
-import fans.umamusume.www.common.kit.DateKit;
 import com.jfinal.core.Controller;
 import com.jfinal.i18n.I18n;
 import com.jfinal.i18n.Res;
 import com.jfinal.kit.Ret;
 import com.jfinal.kit.StrKit;
+import fans.umamusume.www.common.kit.DateKit;
 import fans.umamusume.www.common.model.User;
 
 import java.util.Date;
@@ -27,6 +27,10 @@ public class ApiV1 extends Controller {
 
     protected void fail(Ret ret) {
         renderJson(ret.setFail());
+    }
+
+    protected void captchaFail(String msg) {
+        renderJson(Ret.fail("msg", msg).set("byCaptcha", true));
     }
 
     protected void success() {
@@ -53,8 +57,8 @@ public class ApiV1 extends Controller {
         return ((User) getAttr("user"));
     }
 
-    protected boolean isSameDay(Date date1,Date date2){
-        return DateKit.isSameDay(date1,date2);
+    protected boolean isSameDay(Date date1, Date date2) {
+        return DateKit.isSameDay(date1, date2);
     }
 
 }

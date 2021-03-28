@@ -1,6 +1,10 @@
 $("#form-login").submit(function (e) {
     e.preventDefault();
     let data = $(this).serializeObject();
+    if(!recaptcha_ready){
+        $.error("请先勾选验证码");
+        return;
+    }
     if (!(data.username && data.password && data.confirm)) {
         $.error(__res.requireMiss);
         return;
@@ -16,4 +20,5 @@ $("#form-login").submit(function (e) {
             $.error(data.msg);
         }
     });
+    grecaptcha.reset();
 });

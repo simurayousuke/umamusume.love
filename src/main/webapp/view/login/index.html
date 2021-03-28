@@ -1,6 +1,6 @@
 #@layout()
 #define main()
-<div class="container" style="width: 300px;border:solid thin darkgrey;padding: 10px;margin-top: 100px;">
+<div class="container" style="width: 325px;border:solid thin darkgrey;padding: 10px;margin-top: 100px;">
     <form id="form-login">
         <div class="form-group">
             <div class="input-control has-icon-left">
@@ -16,7 +16,8 @@
                 <label class="input-control-icon-left" for="password"><i class="icon icon-key"></i></label>
             </div>
         </div>
-        <button class="btn btn-block btn-primary" id="login-button" type="submit">#(_res.get("login"))</button>
+        #include("/view/common/recaptcha.html")
+        <button class="btn btn-block btn-primary" id="login-button" type="submit" style="margin-top: 10px;">#(_res.get("login"))</button>
     </form>
 </div>
 #end

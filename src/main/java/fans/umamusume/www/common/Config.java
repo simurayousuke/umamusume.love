@@ -29,6 +29,7 @@ public class Config extends JFinalConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
     public static final String OSSPATH="umasset.zhuangcloud.cn";
     public static final String SITENAME="马娘粉";
+    public static final String RECAPTCHA="6LfiE5IaAAAAAFlW2OKv4oLU4tx1YDw_KdJb04pK";
 
     static Prop p;
 
