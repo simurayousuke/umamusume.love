@@ -11,6 +11,7 @@ import fans.umamusume.www.index.IndexController;
 import fans.umamusume.www.login.LoginController;
 import fans.umamusume.www.proper.ProperController;
 import fans.umamusume.www.reg.RegController;
+import fans.umamusume.www.share.ShareController;
 import fans.umamusume.www.simulate.SimulateController;
 import fans.umamusume.www.skill.SkillController;
 import fans.umamusume.www.statistic.StatisticController;
@@ -40,5 +41,6 @@ public class FrontRoutes extends Routes {
         add("/statistic", StatisticController.class);
         add("/admin", AdminController.class);
         add("/simulate", SimulateController.class);
+        add("/share", ShareController.class);
     }
 }
