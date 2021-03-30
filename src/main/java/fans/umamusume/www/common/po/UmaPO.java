@@ -169,7 +169,7 @@ public class UmaPO {
                 runningStyle = "未知";
                 break;
         }
-        icon = Config.OSSPATH + "/umaicon/00000.png";
+        icon = Config.OSSPATH + "/umaicon/000000.png";
         for (int i : iconsId) {
             if (i == id) {
                 icon = Config.OSSPATH + "/umaicon/" + id + ".png";

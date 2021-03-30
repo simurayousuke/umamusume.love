@@ -30,9 +30,9 @@ public class SupportCardPO {
     private SkillSetPO skillSet;
     private List<SupportEffectTablePO> supportEffectTable;
 
-    private static final int max1 = 10054;
-    private static final int max2 = 20025;
-    private static final int max3 = 30027;
+    private static final int max1 = 10057;
+    private static final int max2 = 20026;
+    private static final int max3 = 30030;
 
     private static List<SupportCardPO> all_support_cards_list = null;
     private static final Log LOGGER = Log.getLog(SupportCardPO.class);
