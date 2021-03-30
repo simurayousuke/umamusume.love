@@ -32,6 +32,29 @@ public class UmaPO {
     private String runningStyle;
     private String icon;
 
+    private SkillDataPO uniqueSkill;
+    private int defaultSpeed;
+    private int defaultStamina;
+    private int defaultPow;
+    private int defaultGuts;
+    private int defaultWiz;
+    private int maxSpeed;
+    private int maxStamina;
+    private int maxPow;
+    private int maxGuts;
+    private int maxWiz;
+    private int properDistanceShort;
+    private int properDistanceMile;
+    private int properDistanceMiddle;
+    private int properDistanceLong;
+    private int properGroundTurf;
+    private int properGroundDirt;
+    private int properRunningStyleNige;
+    private int properRunningStyleSenko;
+    private int properRunningStyleSashi;
+    private int properRunningStyleOikomi;
+    private List<CardRarityDataPO> rarityList;
+
     private static List<UmaPO> all_uma_list = null;
     private static final Log LOGGER = Log.getLog(UmaPO.class);
 
@@ -61,10 +84,32 @@ public class UmaPO {
                         "       talent_group_id,\n" +
                         "       bg_id,\n" +
                         "       get_piece_id,\n" +
-                        "       running_style\n" +
+                        "       running_style,\n" +
+                        "       d.skill_set as uniqueSkill,\n" +
+                        "       d.speed,\n" +
+                        "       d.stamina,\n" +
+                        "       d.pow,\n" +
+                        "       d.guts,\n" +
+                        "       d.wiz,\n" +
+                        "       d.max_speed,\n" +
+                        "       d.max_stamina,\n" +
+                        "       d.max_pow,\n" +
+                        "       d.max_guts,\n" +
+                        "       d.max_wiz,\n" +
+                        "       d.proper_distance_short,\n" +
+                        "       d.proper_distance_mile,\n" +
+                        "       d.proper_distance_middle,\n" +
+                        "       d.proper_distance_long,\n" +
+                        "       d.proper_ground_turf,\n" +
+                        "       d.proper_ground_dirt,\n" +
+                        "       d.proper_running_style_nige,\n" +
+                        "       d.proper_running_style_senko,\n" +
+                        "       d.proper_running_style_sashi,\n" +
+                        "       d.proper_running_style_oikomi\n" +
                         "from card_data a\n" +
-                        "left join text_data b on b.\"index\"=a.id and b.category=5\n" +
-                        "left join text_data c on c.\"index\"=a.chara_id and c.category=6;";
+                        "         left join text_data b on b.\"index\" = a.id and b.category = 5\n" +
+                        "         left join text_data c on c.\"index\" = a.chara_id and c.category = 6\n" +
+                        "left join card_rarity_data d on d.card_id=a.id and d.rarity=a.default_rarity;";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
                     all_uma_list.add(new UmaPO(rs));
@@ -131,6 +176,27 @@ public class UmaPO {
                 break;
             }
         }
+        uniqueSkill=SkillSetPO.getSkillSet(rs.getInt(17)).getSkills().get(0);
+        defaultSpeed=rs.getInt(18);
+        defaultStamina=rs.getInt(19);
+        defaultPow=rs.getInt(20);
+        defaultGuts=rs.getInt(21);
+        defaultWiz=rs.getInt(22);
+        maxSpeed=rs.getInt(23);
+        maxStamina=rs.getInt(24);
+        maxPow=rs.getInt(25);
+        maxGuts=rs.getInt(26);
+        maxWiz=rs.getInt(27);
+        properDistanceShort=rs.getInt(28);
+        properDistanceMile=rs.getInt(29);
+        properDistanceMiddle=rs.getInt(30);
+        properDistanceLong=rs.getInt(31);
+        properGroundTurf=rs.getInt(32);
+        properGroundDirt=rs.getInt(33);
+        properRunningStyleNige=rs.getInt(34);
+        properRunningStyleSenko=rs.getInt(35);
+        properRunningStyleSashi=rs.getInt(36);
+        properRunningStyleOikomi=rs.getInt(37);
     }
 
     public UmaPO() {
@@ -214,5 +280,89 @@ public class UmaPO {
 
     public List<TalentUpgradePO> getTalentUpgrade() {
         return talentUpgrade;
+    }
+
+    public SkillDataPO getUniqueSkill() {
+        return uniqueSkill;
+    }
+
+    public int getDefaultSpeed() {
+        return defaultSpeed;
+    }
+
+    public int getDefaultStamina() {
+        return defaultStamina;
+    }
+
+    public int getDefaultPow() {
+        return defaultPow;
+    }
+
+    public int getDefaultGuts() {
+        return defaultGuts;
+    }
+
+    public int getDefaultWiz() {
+        return defaultWiz;
+    }
+
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public int getMaxStamina() {
+        return maxStamina;
+    }
+
+    public int getMaxPow() {
+        return maxPow;
+    }
+
+    public int getMaxGuts() {
+        return maxGuts;
+    }
+
+    public int getMaxWiz() {
+        return maxWiz;
+    }
+
+    public int getProperDistanceShort() {
+        return properDistanceShort;
+    }
+
+    public int getProperDistanceMile() {
+        return properDistanceMile;
+    }
+
+    public int getProperDistanceMiddle() {
+        return properDistanceMiddle;
+    }
+
+    public int getProperDistanceLong() {
+        return properDistanceLong;
+    }
+
+    public int getProperGroundTurf() {
+        return properGroundTurf;
+    }
+
+    public int getProperGroundDirt() {
+        return properGroundDirt;
+    }
+
+    public int getProperRunningStyleNige() {
+        return properRunningStyleNige;
+    }
+
+    public int getProperRunningStyleSenko() {
+        return properRunningStyleSenko;
+    }
+
+    public int getProperRunningStyleSashi() {
+        return properRunningStyleSashi;
+    }
+
+    public int getProperRunningStyleOikomi() {
+        return properRunningStyleOikomi;
     }
 }

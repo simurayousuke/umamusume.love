@@ -102,3 +102,6 @@ gen
 /src/main/resources/config.txt
 /src/main/resources/config-dev.txt
 !/src/*/target/
+
+umafan-0dbf958ee93d.json
+recaptcha_v2.txt

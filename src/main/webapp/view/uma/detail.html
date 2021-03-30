@@ -85,6 +85,72 @@
                 <td>#(uma.getTalentWiz())</td>
             </tr>
             #end
+            <tr>
+                <td>初始速度</td>
+                <td>#(uma.defaultSpeed)</td>
+            </tr>
+            <tr>
+                <td>初始耐力</td>
+                <td>#(uma.defaultStamina)</td>
+            </tr>
+            <tr>
+                <td>初始力量</td>
+                <td>#(uma.defaultPow)</td>
+            </tr>
+            <tr>
+                <td>初始根性</td>
+                <td>#(uma.defaultGuts)</td>
+            </tr>
+            <tr>
+                <td>初始智力</td>
+                <td>#(uma.defaultWiz)</td>
+            </tr>
+            <tr>
+                <td>最大速度</td>
+                <td>#(uma.maxSpeed)</td>
+            </tr>
+            <tr>
+                <td>最大耐力</td>
+                <td>#(uma.maxStamina)</td>
+            </tr>
+            <tr>
+                <td>最大力量</td>
+                <td>#(uma.maxPow)</td>
+            </tr>
+            <tr>
+                <td>最大根性</td>
+                <td>#(uma.maxGuts)</td>
+            </tr>
+            <tr>
+                <td>最大智力</td>
+                <td>#(uma.maxWiz)</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="center-parent"><h2>适性</h2></div>
+    <div class="center-parent">
+        <table class="table table-auto table-bordered table-hover">
+            <tbody>
+            <tr>
+                <td>草地&nbsp;#(_formatProper(uma.getProperGroundTurf()))</td>
+                <td>泥地&nbsp;#(_formatProper(uma.getProperGroundDirt()))</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>短距离&nbsp;#(_formatProper(uma.getProperDistanceShort()))</td>
+                <td>英里&nbsp;#(_formatProper(uma.getProperDistanceMile()))</td>
+                <td>中距离&nbsp;#(_formatProper(uma.getProperDistanceMiddle()))</td>
+                <td>长距离&nbsp;#(_formatProper(uma.getProperDistanceLong()))</td>
+            </tr>
+            <tr>
+                <td>逃&nbsp;#(_formatProper(uma.getProperRunningStyleNige()))</td>
+                <td>先行&nbsp;#(_formatProper(uma.getProperRunningStyleSenko()))</td>
+                <td>差&nbsp;#(_formatProper(uma.getProperRunningStyleSashi()))</td>
+                <td>追&nbsp;#(_formatProper(uma.getProperRunningStyleOikomi()))</td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -154,7 +220,7 @@
         </table>
     </div>
     <hr>
-    <div class="center-parent"><h2>其他面板</h2></div>
+    <div class="center-parent"><h2>其他</h2></div>
     <div class="center-parent">
         开发中...
     </div>

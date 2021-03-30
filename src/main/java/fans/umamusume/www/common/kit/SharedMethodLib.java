@@ -22,4 +22,10 @@ public class SharedMethodLib {
         return dateFormat2.format(date);
     }
 
+    public char _formatProper(int proper){
+        if(8==proper)
+            return 'S';
+        return (char)(72-proper);
+    }
+
 }
