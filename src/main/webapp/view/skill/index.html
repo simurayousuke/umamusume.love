@@ -24,15 +24,17 @@
         #for(skill:skills)
         <tr>
             <td><span class="hide">#(skill.getId())</span><img src="//#(skill.getIcon())" width="30px" class="img-rounded"></td>
-            <td><a href="/skill/detail/#(skill.getId())">#(skill.getName())</a></td>
+            <td>
+                <a data-toggle="tooltip" data-placement="right" data-title="#(skill.description)" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a>
+                <a href="/skill/detail/#(skill.getId())">#(skill.getName())</a></td>
             <!--<div>#(skill.getDescription().replaceAll("\\n","<br>"))</div>-->
             <!--<div>#(skill.getRawCondition())</div>-->
             <td><a data-toggle="tooltip" data-placement="left" data-title="#(skill.getRawCondition())" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a>#(skill.getCondition())</td>
             <td><a data-toggle="tooltip" data-placement="left" data-title="#(skill.getRawDuration())" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a>#(skill.getDuration())</td>
             <td><a data-toggle="tooltip" data-placement="left" data-title="#(skill.getRawCooldown())" data-trigger="focus hover click"><i class="icon icon-info-sign"></i></a>#(skill.getCooldown())</td>
-            <td>#(skill.getStr1())</td>
-            <td>#(skill.getStr2())</td>
-            <td>#(skill.getStr3())</td>
+            <td>#(skill.tooltip1)#(skill.effect1)</td>
+            <td>#(skill.tooltip2)#(skill.effect2)</td>
+            <td>#(skill.tooltip3)#(skill.effect3)</td>
         </tr>
         #end
         </tbody>

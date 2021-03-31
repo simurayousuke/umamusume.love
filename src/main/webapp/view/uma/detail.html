@@ -55,75 +55,47 @@
                 <td>默认跑法</td>
                 <td>#(uma.getRunningStyle())</td>
             </tr>
-            #if(uma.getTalentSpeed()>0)
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="center-parent"><h2>五维</h2></div>
+    <div class="center-parent">
+        <table>
+            <thead>
             <tr>
-                <td>速度训练加成</td>
-                <td>#(uma.getTalentSpeed())</td>
+                <td>属性</td>
+                <td>速度</td>
+                <td>耐力</td>
+                <td>力量</td>
+                <td>根性</td>
+                <td>智力</td>
             </tr>
-            #end
-            #if(uma.getTalentStamina()>0)
+            </thead>
+            <tbody>
             <tr>
-                <td>耐力训练加成</td>
-                <td>#(uma.getTalentStamina())</td>
+                <td>最大值</td>
+                <td>#(uma.maxSpeed)</td>
+                <td>#(uma.maxStamina)</td>
+                <td>#(uma.maxPow)</td>
+                <td>#(uma.maxGuts)</td>
+                <td>#(uma.maxWiz)</td>
             </tr>
-            #end
-            #if(uma.getTalentPow()>0)
             <tr>
-                <td>力量训练加成</td>
-                <td>#(uma.getTalentPow())</td>
-            </tr>
-            #end
-            #if(uma.getTalentGuts()>0)
-            <tr>
-                <td>根性训练加成</td>
-                <td>#(uma.getTalentGuts())</td>
-            </tr>
-            #end
-            #if(uma.getTalentWiz()>0)
-            <tr>
-                <td>智力训练加成</td>
-                <td>#(uma.getTalentWiz())</td>
-            </tr>
-            #end
-            <tr>
-                <td>初始速度</td>
+                <td>初始值</td>
                 <td>#(uma.defaultSpeed)</td>
-            </tr>
-            <tr>
-                <td>初始耐力</td>
                 <td>#(uma.defaultStamina)</td>
-            </tr>
-            <tr>
-                <td>初始力量</td>
                 <td>#(uma.defaultPow)</td>
-            </tr>
-            <tr>
-                <td>初始根性</td>
                 <td>#(uma.defaultGuts)</td>
-            </tr>
-            <tr>
-                <td>初始智力</td>
                 <td>#(uma.defaultWiz)</td>
             </tr>
             <tr>
-                <td>最大速度</td>
-                <td>#(uma.maxSpeed)</td>
-            </tr>
-            <tr>
-                <td>最大耐力</td>
-                <td>#(uma.maxStamina)</td>
-            </tr>
-            <tr>
-                <td>最大力量</td>
-                <td>#(uma.maxPow)</td>
-            </tr>
-            <tr>
-                <td>最大根性</td>
-                <td>#(uma.maxGuts)</td>
-            </tr>
-            <tr>
-                <td>最大智力</td>
-                <td>#(uma.maxWiz)</td>
+                <td>训练加成</td>
+                <td>#(uma.talentSpeed>0?uma.talentSpeed+"%":"")</td>
+                <td>#(uma.talentStamina>0?uma.talentStamina+"%":"")</td>
+                <td>#(uma.talentPow>0?uma.talentPow+"%":"")</td>
+                <td>#(uma.talentGuts>0?uma.talentGuts+"%":"")</td>
+                <td>#(uma.talentWiz>0?uma.talentWiz+"%":"")</td>
             </tr>
             </tbody>
         </table>
@@ -212,7 +184,8 @@
                 #setLocal(count--)
                 #end
                 #for(i=0;i<count;++i)
-                <td></td><td></td>
+                <td></td>
+                <td></td>
                 #end
             </tr>
             #end
@@ -237,7 +210,8 @@
         border: 1px solid #ddd;
         padding: 4px 10px;
     }
-    .table-datatable td,th{
+
+    .table-datatable td, th {
         text-align: center;
     }
 </style>
@@ -250,6 +224,6 @@
 
 #define js()
 <script>
-    init_datatable({sortable:false,fixedHeader:true});
+    init_datatable({sortable: false, fixedHeader: true});
 </script>
 #end

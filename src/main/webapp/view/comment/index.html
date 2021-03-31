@@ -77,7 +77,7 @@
         #else
         <form id="form-comment">
             <div class=" form-group">
-                <textarea class="form-control" placeholder="留条评论吧~" name="content"></textarea>
+                <textarea class="form-control" placeholder="留条评论吧~" name="content" id="input-comment"></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-block" id="button-comment">留言</button>
         </form>
@@ -113,6 +113,7 @@
         $.post1("/api/v1/comment/add", data, function (data) {
             if ("ok" === data.state) {
                 $.ok("评论成功", () => {
+                    document.getElementById("input-comment").value = "";
                     location.reload();
                 });
                 button.prop("disabled", false);

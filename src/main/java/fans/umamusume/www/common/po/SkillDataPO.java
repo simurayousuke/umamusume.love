@@ -3,6 +3,7 @@ package fans.umamusume.www.common.po;
 import com.jfinal.kit.StrKit;
 import com.jfinal.log.Log;
 import fans.umamusume.www.common.Config;
+import fans.umamusume.www.common.kit.ConvertKit;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -30,23 +31,76 @@ public class SkillDataPO {
     private int type3;
     private float value3;
     private int icon;
+    private int targetType1;
+    private int targetValue1;
+    private int targetType2;
+    private int targetType3;
+    private int targetValue2;
+    private int targetValue3;
 
     private String durationStr;
     private String cooldownStr;
-    private String type1Str;
+    private String effect1;
+    private String effect2;
+    private String effect3;
+    /*private String type1Str;
     private String type2Str;
     private String type3Str;
     private String value1Str;
     private String value2Str;
-    private String value3Str;
+    private String value3Str;*/
     private String iconStr;
 
-    private String str1;
-    private String str2;
-    private String str3;
+    private String tooltip1;
+    private String tooltip2;
+    private String tooltip3;
 
     private static List<SkillDataPO> all_skills_list = null;
     private static final Log LOGGER = Log.getLog(SkillDataPO.class);
+
+    /*
+    target_type
+1  自己
+4  其他的马
+9  前方的马
+10 后方的马
+18 其他特定跑法的马
+19 前方掛かった的马
+20 后方掛かった的马
+21 掛る的马
+target_value
+* 1 逃
+* 2 先行
+* 3 差
+* 4 追
+* 5  第一只马?
+* 10 掛かった?
+* 18 所有马
+---------------
+1  自己
+4  其他的马
+* 18 所有马
+9  前方的马
+* 18 所有马
+* 5  第一只马?
+10 后方的马
+* 18 所有马
+* 5  第一只马?
+18 其他特定跑法的马
+* 1 逃
+* 2 先行
+* 3 差
+* 4 追
+19 前方掛る的马
+* 10 掛かった?
+20 后方掛る的马
+* 10 掛かった?
+21 掛る的马
+* 1 逃
+* 2 先行
+* 3 差
+* 4 追
+*/
 
     public static List<SkillDataPO> getAllSkillsList() {
         if (null == all_skills_list) {
@@ -57,7 +111,9 @@ public class SkillDataPO {
                 stmt = c.createStatement();
                 String sql = "select a.id as 技能id,b.text as 技能名称,c.text as 技能描述,condition_1 as 触发条件,float_ability_time_1 as 生效时长," +
                         "float_cooldown_time_1 as 冷却时间, ability_type_1_1 as 效果1, float_ability_value_1_1 as 数值1,ability_type_1_2 as 效果2,float_ability_value_1_2 as 数值2," +
-                        "ability_type_1_3 as 效果3,float_ability_value_1_3 as 数值3, icon_id as 图标 from skill_data as a left join text_data as b on b.\"index\"=a.id and b.category=47 left join text_data as c " +
+                        "ability_type_1_3 as 效果3,float_ability_value_1_3 as 数值3, icon_id as 图标, target_type_1_1,target_value_1_1," +
+                        "target_type_1_2,target_value_1_2,target_type_1_3," +
+                        "target_value_1_3 from skill_data as a left join text_data as b on b.\"index\"=a.id and b.category=47 left join text_data as c " +
                         "on c.\"index\"=a.id and c.category=48;";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
@@ -107,6 +163,29 @@ public class SkillDataPO {
         put(31, "加速力");
     }};
 
+    public static final Map<Integer, String> skill_target_value_table = new HashMap<Integer, String>() {{
+        put(0, "马的");
+        put(1, "逃马的");
+        put(2, "先行马的");
+        put(3, "差马的");
+        put(4, "追马的");
+        put(5, "第一只马(?)的");
+        put(10, "掛かった的马的");
+        put(18, "所有马的");
+    }};
+
+    public static final Map<Integer, String> skill_target_type_table = new HashMap<Integer, String>() {{
+        put(0, "");
+        put(1, "自己的");
+        put(4, "其他的");
+        put(9, "前方的");
+        put(10, "后方的");
+        put(18, "其他的");
+        put(19, "前方的");
+        put(20, "后方的");
+        put(21, "(包括自己?)掛る的");
+    }};
+
     public static final Map<String, String> condition_type_table = new HashMap<String, String>() {{
         put("distance_rate", "赛程进度百分比");
         put("order_rate", "排名百分比");
@@ -142,6 +221,8 @@ public class SkillDataPO {
         put("same_skill_horse_count", "拥有本技能马数");
         put("infront_near_lane_time", "同赛道前方近处有马持续时间");
         put("behind_near_lane_time", "同赛道后方近处有马持续时间");
+        put("overtake_target_no_order_up_time","想要超车但没能超过去的持续时间");
+        put("overtake_target_time","想要超车的持续时间");
     }};
 
     private static final Map<String, String> condition_special_table = new HashMap<String, String>() {{
@@ -277,6 +358,48 @@ public class SkillDataPO {
     SkillDataPO() {
     }
 
+    private String combineSkillEffectDescription(int effectType, float effectValue, int targetType, int targetValue) {
+        float absValue = Math.abs(effectValue);
+        String value = "";
+        String res="";
+        if(effectType!=0){
+            switch (effectType) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 8:
+                case 21:
+                case 27:
+                case 28:
+                case 31:
+                    value = ConvertKit.convertFloatToString(absValue / 10000f);
+                    break;
+                case 9:
+                    value = ConvertKit.convertFloatToString(absValue / 100f) + "%";
+                    break;
+                default:
+                    value = absValue + "";
+            }
+            res= skill_target_type_table.getOrDefault(targetType, targetType + "的")
+                    + skill_target_value_table.getOrDefault(targetValue, targetValue + "马的")
+                    + skill_effect_type_table.getOrDefault(effectType, effectType + "")
+                    + (effectValue < 0 ? "降低" : "提高")+" " + value;
+        }
+        return res;
+    }
+
+    private String combineTooltipDescription(int effectType, float effectValue, int targetType, int targetValue) {
+        String res = "";
+        if (effectType != 0) {
+            res = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + targetType + "的" + targetValue + "的"
+                    + effectType + "改变" + effectValue + "\" " +
+                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>";
+        }
+        return res;
+    }
+
     public SkillDataPO(ResultSet rs) throws SQLException {
         id = rs.getInt(1);
         name = rs.getString(2);
@@ -291,26 +414,29 @@ public class SkillDataPO {
         type3 = rs.getInt(11);
         value3 = rs.getFloat(12);
         icon = rs.getInt(13);
+        targetType1 = rs.getInt(14);
+        targetValue1 = rs.getInt(15);
+        targetType2 = rs.getInt(16);
+        targetValue2 = rs.getInt(17);
+        targetType3 = rs.getInt(18);
+        targetValue3 = rs.getInt(19);
+
         if (duration == -1)
             durationStr = "瞬间生效";
         else
-            durationStr = String.format("%.1f", duration / 10000f) + "秒";
+            durationStr = ConvertKit.convertFloatToString(duration / 10000f) + "秒";
         if (cooldown == 0)
             cooldownStr = "常驻";
         else
-            cooldownStr = String.format("%.1f", cooldown / 10000f) + "秒";
-        if (skill_effect_type_table.containsKey((type1)))
-            type1Str = skill_effect_type_table.get(type1);
-        else
-            type1Str = "" + type1;
-        if (skill_effect_type_table.containsKey((type2)))
-            type2Str = skill_effect_type_table.get(type2);
-        else
-            type2Str = "" + type2;
-        if (skill_effect_type_table.containsKey((type3)))
-            type3Str = skill_effect_type_table.get(type3);
-        else
-            type3Str = "" + type3;
+            cooldownStr = ConvertKit.convertFloatToString(cooldown / 10000f) + "秒";
+
+        effect1 = combineSkillEffectDescription(type1, value1, targetType1, targetValue1);
+        effect2 = combineSkillEffectDescription(type2, value2, targetType2, targetValue2);
+        effect3 = combineSkillEffectDescription(type3, value3, targetType3, targetValue3);
+        tooltip1 = combineTooltipDescription(type1, value1, targetType1, targetValue1);
+        tooltip2 = combineTooltipDescription(type2, value2, targetType2, targetValue2);
+        tooltip3 = combineTooltipDescription(type3, value3, targetType3, targetValue3);
+
         iconStr = Config.OSSPATH + "/skillicon/00000.png";
         for (int i : skill_icons_id) {
             if (i == icon) {
@@ -319,81 +445,6 @@ public class SkillDataPO {
             }
         }
 
-        switch (type1) {
-            case 0:
-                value1Str = "";
-                break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                value1Str = (int) Math.floor(value1 / 10000) + "";
-                break;
-            case 21:
-            case 27:
-            case 31:
-                value1Str = (int) Math.floor(value1 / 100) + "%";
-                break;
-            default:
-                value1Str = value1 + "";
-        }
-        if (type1 == 0) {
-            str1 = "";
-        } else {
-            str1 = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + type1 + ":" + value1 + "\" " +
-                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" + type1Str + ":" + value1Str;
-        }
-        switch (type2) {
-            case 0:
-                value2Str = "";
-                break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                value2Str = (int) Math.floor(value2 / 10000) + "";
-                break;
-            case 21:
-            case 27:
-            case 31:
-                value2Str = (int) Math.floor(value2 / 100) + "%";
-                break;
-            default:
-                value2Str = value2 + "";
-        }
-        if (type2 == 0) {
-            str2 = "";
-        } else {
-            str2 = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + type2 + ":" + value2 + "\" " +
-                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" + type2Str + ":" + value2Str;
-        }
-        switch (type3) {
-            case 0:
-                value3Str = "";
-                break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                value3Str = (int) Math.floor(value3 / 10000) + "";
-                break;
-            case 21:
-            case 27:
-            case 31:
-                value3Str = (int) Math.floor(value3 / 100) + "%";
-                break;
-            default:
-                value3Str = value3 + "";
-        }
-        if (type3 == 0) {
-            str3 = "";
-        } else {
-            str3 = "<a data-toggle=\"tooltip\" data-placement=\"left\" data-title=\"" + type3 + ":" + value3 + "\" " +
-                    "data-trigger=\"focus hover click\"><i class=\"icon icon-info-sign\"></i></a>" + type3Str + ":" + value3Str;
-        }
     }
 
     public int getId() {
@@ -460,9 +511,6 @@ public class SkillDataPO {
         return type1;
     }
 
-    public String getType1() {
-        return type1Str;
-    }
 
     public void setType1(int type1) {
         this.type1 = type1;
@@ -472,9 +520,6 @@ public class SkillDataPO {
         return value1;
     }
 
-    public String getValue1() {
-        return value1Str;
-    }
 
     public void setValue1(float value1) {
         this.value1 = value1;
@@ -484,9 +529,6 @@ public class SkillDataPO {
         return type2;
     }
 
-    public String getType2() {
-        return type2Str;
-    }
 
     public void setType2(int type2) {
         this.type2 = type2;
@@ -496,9 +538,6 @@ public class SkillDataPO {
         return value2;
     }
 
-    public String getValue2() {
-        return value2Str;
-    }
 
     public void setValue2(float value2) {
         this.value2 = value2;
@@ -508,9 +547,6 @@ public class SkillDataPO {
         return type3;
     }
 
-    public String getType3() {
-        return type3Str;
-    }
 
     public void setType3(int type3) {
         this.type3 = type3;
@@ -520,9 +556,6 @@ public class SkillDataPO {
         return value3;
     }
 
-    public String getValue3() {
-        return value3Str;
-    }
 
     public void setValue3(float value3) {
         this.value3 = value3;
@@ -536,15 +569,75 @@ public class SkillDataPO {
         this.icon = icon;
     }
 
-    public String getStr1() {
-        return str1;
+    public int getType1() {
+        return type1;
     }
 
-    public String getStr2() {
-        return str2;
+    public float getValue1() {
+        return value1;
     }
 
-    public String getStr3() {
-        return str3;
+    public int getType2() {
+        return type2;
+    }
+
+    public float getValue2() {
+        return value2;
+    }
+
+    public int getType3() {
+        return type3;
+    }
+
+    public float getValue3() {
+        return value3;
+    }
+
+    public int getTargetType1() {
+        return targetType1;
+    }
+
+    public int getTargetValue1() {
+        return targetValue1;
+    }
+
+    public int getTargetType2() {
+        return targetType2;
+    }
+
+    public int getTargetType3() {
+        return targetType3;
+    }
+
+    public int getTargetValue2() {
+        return targetValue2;
+    }
+
+    public int getTargetValue3() {
+        return targetValue3;
+    }
+
+    public String getEffect1() {
+        return effect1;
+    }
+
+    public String getEffect2() {
+        return effect2;
+    }
+
+    public String getEffect3() {
+        return effect3;
+    }
+
+    public String getTooltip1() {
+        return tooltip1;
+    }
+
+    public String getTooltip2() {
+        return tooltip2;
+    }
+
+    public String getTooltip3() {
+        return tooltip3;
     }
 }

@@ -47,12 +47,20 @@ public class Test {
         printProperTable(ProperPO.getProperList(ProperPO.type.style));
     }
 
+    public static String doubleTrans(float d){
+        if(Math.round(d)-d==0){
+            return String.valueOf((long)d);
+        }
+        return String.valueOf(d);
+    }
+
     public static void main(String[] args) {
 //        printAllProperTable();
         //String testHtml = "<div class='div'style='height: 100px;'><a href='\\test'>aaa</a>div 标签的内容 </div><p class='div'style='width: 50px;'>p 标签的内容 </p>";
         //System.out.println(JsoupKit.clean(testHtml));// 输出:   div 标签的内容 < p>p 标签的内容 </p>
-        for(int i=7;i>0;i--)
-        System.out.println((char)(72-i));
+       /* for(int i=7;i>0;i--)
+        System.out.println((char)(72-i));*/
+        System.out.println( doubleTrans( 35000 / 10000f));
     }
 
 }

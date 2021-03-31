@@ -30,6 +30,10 @@
                 <td>#(skill.getCondition())</td>
             </tr>
             <tr>
+                <td>原条件</td>
+                <td>#(skill.getRawCondition())</td>
+            </tr>
+            <tr>
                 <td>持续时间</td>
                 <td>#(skill.getDuration())</td>
             </tr>
@@ -39,23 +43,15 @@
             </tr>
             <tr>
                 <td>效果1</td>
-                <td>#(skill.getType1()):#(skill.getValue1())</td>
+                <td>#(skill.effect1)</td>
             </tr>
             <tr>
                 <td>效果2</td>
-                <td>
-                    #if(skill.getType2()!="0")
-                    #(skill.getType2()):#(skill.getValue2())
-                    #end
-                </td>
+                <td>#(skill.effect2)</td>
             </tr>
             <tr>
                 <td>效果3</td>
-                <td>
-                    #if(skill.getType3()!="0")
-                    #(skill.getType3()):#(skill.getValue3())
-                    #end
-                </td>
+                <td>#(skill.effect3)</td>
             </tr>
             </tbody>
         </table>
