@@ -156,7 +156,7 @@ target_value
         put(8, "视野");
         put(9, "持久力");
         put(10, "起跑");
-        put(13, "冷静");
+        put(13, "掛る持续时间(?)");
         put(21, "速度");
         put(27, "速度");
         put(28, "抢路");
@@ -378,6 +378,9 @@ target_value
                     break;
                 case 9:
                     value = ConvertKit.convertFloatToString(absValue / 100f) + "%";
+                    break;
+                case 13:
+                    value = ConvertKit.convertFloatToString(absValue / 10000f) + "秒";
                     break;
                 default:
                     value = absValue + "";
