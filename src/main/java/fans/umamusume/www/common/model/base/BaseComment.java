@@ -31,6 +31,12 @@ public abstract class BaseComment<M extends BaseComment<M>> extends Model<M> imp
 2.相性一览页面
 3.适性修正页面
 4.公告详情页面
+5.留言板
+6.马娘详情
+7.支援卡一览
+8.马娘一览
+9.育成模拟
+10.种马支援卡搜索
 	 */
 	public void setTarget1(java.lang.Integer target1) {
 		set("target1", target1);
@@ -42,6 +48,12 @@ public abstract class BaseComment<M extends BaseComment<M>> extends Model<M> imp
 2.相性一览页面
 3.适性修正页面
 4.公告详情页面
+5.留言板
+6.马娘详情
+7.支援卡一览
+8.马娘一览
+9.育成模拟
+10.种马支援卡搜索
 	 */
 	public java.lang.Integer getTarget1() {
 		return getInt("target1");

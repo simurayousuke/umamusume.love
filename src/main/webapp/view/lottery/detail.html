@@ -1,0 +1,51 @@
+#@layout()
+#define main()
+#if(lottery==null)
+<div class="center-parent">抽奖不存在</div>
+#else
+<div class="center-parent">
+<h1>#(lottery.title)</h1>
+</div>
+<div class="center-parent">
+<p>#(lottery.description)</p>
+</div>
+<div class="center-parent">
+    <p>开始时间：#(_formatDate(lottery.startTime))</p>
+</div>
+<div class="center-parent">
+    <p>截至时间：#(_formatDate(lottery.endTime))</p>
+</div>
+#if(lotteryUser==null)
+#if(user==null)
+<div>参加抽奖请先<a href="/login">登录</a></div>
+#else
+#if(now.compareTo(lottery.startTime)<0)
+<div>抽奖还未开始</div>
+#else if(now.compareTo(lottery.endTime)>0)
+<div>抽奖已经结束</div>
+#else
+<div class="container" style="width: 325px;border:solid thin darkgrey;padding: 10px;margin-top: 100px;">
+    <h2>参加抽奖</h2>
+    <form id="form-lottery">
+        <div class="form-group">
+            <div class="input-control has-icon-left">
+                <input class="hide" name="id" value="#(lottery.id)">
+                <input class="form-control" id="input-email" name="email" placeholder='请填写领奖邮箱'
+                       type="text">
+            </div>
+        </div>
+        #include("/view/common/recaptcha.html")
+        <button class="btn btn-block btn-primary" id="button-submit" type="submit" style="margin-top: 10px;">应募</button>
+    </form>
+</div>
+#end
+#end
+#else
+<div>您已经于#(_formatDate(lotteryUser.entryTime))以#(lotteryUser.email)应募过了。</div>
+#end
+#end
+#end
+
+#define js()
+<script src="/js/lottery/detail.js?#(_generateUuid())"></script>
+#end

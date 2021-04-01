@@ -9,6 +9,7 @@ import fans.umamusume.www.common.base.ResJsController;
 import fans.umamusume.www.common.interceptor.ExceptionInterceptor;
 import fans.umamusume.www.index.IndexController;
 import fans.umamusume.www.login.LoginController;
+import fans.umamusume.www.lottery.LotteryController;
 import fans.umamusume.www.proper.ProperController;
 import fans.umamusume.www.reg.RegController;
 import fans.umamusume.www.share.ShareController;
@@ -42,5 +43,6 @@ public class FrontRoutes extends Routes {
         add("/admin", AdminController.class);
         add("/simulate", SimulateController.class);
         add("/share", ShareController.class);
+        add("/lottery", LotteryController.class);
     }
 }
