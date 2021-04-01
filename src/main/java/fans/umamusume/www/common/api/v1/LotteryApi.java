@@ -1,6 +1,7 @@
 package fans.umamusume.www.common.api.v1;
 
 import fans.umamusume.www.common.base.ApiV1;
+import fans.umamusume.www.common.kit.HttpPost;
 import fans.umamusume.www.common.model.Lottery;
 import fans.umamusume.www.common.model.LotteryUser;
 import fans.umamusume.www.common.model.User;
@@ -12,8 +13,13 @@ public class LotteryApi extends ApiV1 {
     public void join() {
         Integer id=getParaToInt("id");
         String email=getPara("email");
+        String recaptcha = getPara("g-recaptcha-response");
         Lottery lottery = Lottery.dao.findById(id);
         User user = (User) getAttr("user");
+        if (!HttpPost.recaptcha(recaptcha)) {
+            fail("验证码无效或已超时，请重试");
+            return;
+        }
         if (user == null | lottery == null) {
             fail("抽奖不存在或未登陆");
             return;
