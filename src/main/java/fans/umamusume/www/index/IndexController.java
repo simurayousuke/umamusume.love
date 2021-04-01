@@ -9,4 +9,9 @@ public class IndexController extends MyController {
         title("主页");
         render("index.html");
     }
+
+    public void file(){
+        title("文件下载");
+        render("file.html");
+    }
 }

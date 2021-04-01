@@ -1,0 +1,28 @@
+#@layout()
+#define main()
+#if(user==null)
+<div class="container">
+    <p>请先<a href="/login">登录</a></p>
+</div>
+#else
+
+    <p><a href="https://umamusume-asset.oss-cn-shanghai.aliyuncs.com/file/jjcracedata.xlsx">竞技场赛场数据</a></p>
+
+#end
+#end
+
+#define lib()
+#end
+
+#define js()
+<script type="text/javascript">
+    function initIframe() {
+        let iframe = document.getElementById("iframe-announcement");
+        let bHeight = iframe.contentWindow.document.body.scrollHeight;
+        let dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+        let height = Math.max(bHeight, dHeight);
+        iframe.height = height;
+    }
+    window.setInterval("initIframe()", 200);
+</script>
+#end
