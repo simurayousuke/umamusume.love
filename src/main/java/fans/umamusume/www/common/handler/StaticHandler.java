@@ -14,8 +14,11 @@ public class StaticHandler extends Handler {
             response.setContentType("application/javascript");
         } else if (target.startsWith("/view")) {
             HandlerKit.renderError404(request, response, isHandled);
+        } else if (target.equals("/ads.txt")) {
+            next.handle("/ads", request, response, isHandled);
         } else {
             next.handle(target, request, response, isHandled);
         }
     }
 }
+

@@ -14,4 +14,8 @@ public class IndexController extends MyController {
         title("文件下载");
         render("file.html");
     }
+
+    public void ads(){
+        renderText("google.com, pub-4096429106764610, DIRECT, f08c47fec0942fa0");
+    }
 }

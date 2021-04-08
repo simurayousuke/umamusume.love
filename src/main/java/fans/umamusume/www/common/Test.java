@@ -1,5 +1,6 @@
 package fans.umamusume.www.common;
 
+import fans.umamusume.www.common.base.Random;
 import fans.umamusume.www.common.po.ProperPO;
 import fans.umamusume.www.common.po.SuccessionRelationPO;
 import fans.umamusume.www.common.po.TextSet;
@@ -47,20 +48,27 @@ public class Test {
         printProperTable(ProperPO.getProperList(ProperPO.type.style));
     }
 
-    public static String doubleTrans(float d){
-        if(Math.round(d)-d==0){
-            return String.valueOf((long)d);
+    public static String doubleTrans(float d) {
+        if (Math.round(d) - d == 0) {
+            return String.valueOf((long) d);
         }
         return String.valueOf(d);
     }
 
-    public static void main(String[] args) {
-//        printAllProperTable();
-        //String testHtml = "<div class='div'style='height: 100px;'><a href='\\test'>aaa</a>div 标签的内容 </div><p class='div'style='width: 50px;'>p 标签的内容 </p>";
-        //System.out.println(JsoupKit.clean(testHtml));// 输出:   div 标签的内容 < p>p 标签的内容 </p>
-       /* for(int i=7;i>0;i--)
-        System.out.println((char)(72-i));*/
-        System.out.println( doubleTrans( 35000 / 10000f));
+    public static final int start = 1;
+    public static final int end = 87;
+    public static final int times = 100;
+    public static void main(String[] args) throws InterruptedException {
+        int number = 0;
+        //做100次
+        for (int i = 0; i < times; ++i) {
+            //从start到end中随机一个整数出来
+            number = new Random().nextInt(end - start + 1) + start;
+            System.out.println(number);
+            Thread.sleep(100);
+        }
+        //最后一次被随机到的人中奖
+        System.out.println("最终中奖者：第" + number + "人");
     }
 
 }

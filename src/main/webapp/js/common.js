@@ -241,6 +241,21 @@ let __shortUrlBase = "https://zhuangcloud.cn/s/";
         return str.replace(reg, b);
     }
 
+    $.getJsData = function (url){
+        if(!document.getElementById("ScriptBox")){
+            let DivObj = document.createElement("div");
+            DivObj.id = "ScriptBox";
+            DivObj.style.display = "none";
+            document.body.appendChild(DivObj);
+        }
+        let Snode = document.createElement("script");
+        Snode.setAttribute("type", "text/javascript");
+        Snode.setAttribute("language", "javascript");
+        Snode.setAttribute("src", url);
+        document.getElementById("ScriptBox").innerHTML = "";
+        document.getElementById("ScriptBox").appendChild(Snode);
+    }
+
 })(jQuery);
 
 const ptr = PullToRefresh.init({
